@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { fetchMovies } from "../globals/global-utils";
-
+import HomeHeroSlider from "../components/HomeHeroSlider";
 const PageHome = () => {
 
 
@@ -10,7 +10,9 @@ const PageHome = () => {
     }, []);
 
     return (
-        <main> <div>PageHome</div></main>
+        <main> <div>PageHome</div>
+            <HomeHeroSlider />
+        </main>
     )
 }
 

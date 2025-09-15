@@ -1,0 +1,115 @@
+/*## Base ##*/
+:root {
+    --black: #191620;
+    --red: #A30D0B;
+    --cream: #FFF9ED;
+}
+
+html {}
+
+@media(prefers-reduced-motion) {}
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
+}
+
+p {}
+
+
+@media (min-width:48em) {
+    p {}
+}
+
+/*# Links #*/
+a {
+
+    &:visited {}
+
+    &:hover {}
+
+    &:focus,
+    &:active {}
+
+}
+
+.social-link {
+    svg {}
+
+    &:hover svg {}
+
+    &:active svg,
+    &:focus svg {
+        path {}
+    }
+}
+
+
+
+/* Button links */
+.btn {
+
+    &:hover {}
+
+    &:visited {}
+
+    &:focus,
+    &:active {}
+}
+
+
+/*# Elements #*/
+
+/* Forms */
+
+
+
+/*## Components ##*/
+
+/*# Header #*/
+header {}
+
+
+
+nav {}
+
+
+
+
+
+
+
+@media (min-width:48em) {
+    header {}
+
+
+    nav {}
+
+
+}
+
+
+/*# Main #*/
+main {}
+
+@media (min-width:48em) {
+    main {}
+}
+
+
+
+/*# Footer #*/
+footer {}
+
+@media (min-width:48em) {
+    footer {}
+}
