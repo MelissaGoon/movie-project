@@ -11,6 +11,8 @@ html {}
 
 body {
     font-family: "Montserrat", sans-serif;
+    background-color: var(--black);
+    color: var(--cream);
 }
 
 h1,
@@ -68,6 +70,32 @@ a {
 
 
 /*# Elements #*/
+/* Loader */
+.loading-page {
+    background-color: var(--black);
+    color: var(--cream);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Created by Temani Afif via https://css-loaders.com/spinner/  */
+.loader {
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid var(--cream);
+    border-right-color: var(--red);
+    animation: l2 1s infinite linear;
+}
+
+@keyframes l2 {
+    to {
+        transform: rotate(1turn)
+    }
+}
 
 /* Forms */
 

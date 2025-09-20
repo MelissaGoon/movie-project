@@ -3,12 +3,12 @@ import { createRoot } from 'react-dom/client';
 import './styles/normalize.css';
 import './styles/base.css';
 
-import AppRouter from './router/AppRouter';
+import App from './App';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AppRouter />
+    <App />
   </StrictMode>,
 )

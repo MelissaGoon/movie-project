@@ -6,7 +6,7 @@ const PageHome = () => {
 
 
     useEffect(() => {
-        fetchMovies("now_playing");
+        // fetchMovies("now_playing");
     }, []);
 
     return (
