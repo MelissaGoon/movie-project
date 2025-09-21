@@ -6,13 +6,17 @@ const Search = () => {
         event.preventDefault();
 
         const formData = new FormData(event.target);
-        const movie = formData.get("movie");
-        let encoded = encodeURIComponent(movie);
+        const movie = formData.get("movie").trim();
 
-        navigate({
-            pathname: "/search",
-            search: `?q=${encoded}`,
-        });
+        if (movie !== "") {
+            let encoded = encodeURIComponent(movie);
+
+            navigate({
+                pathname: "/search",
+                search: `?q=${encoded}`,
+            });
+        }
+
 
     };
 

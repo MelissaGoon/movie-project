@@ -8,7 +8,9 @@
     gap: 2rem;
 
     .poster {
+        clip-path: inset(0 0 0 0 round clamp(10px, 10vw, 20px));
         height: clamp(20rem, 50vw, 30rem);
+
     }
 
     .rating {

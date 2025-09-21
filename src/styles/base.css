@@ -69,6 +69,25 @@ a {
 }
 
 
+/* Buttons */
+button {
+
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--red);
+    color: var(--cream);
+    border: none;
+    border-radius: 500px;
+
+
+    &.border-cream {
+        border: 2px solid var(--cream);
+    }
+}
+
 /*# Elements #*/
 /* Loader */
 .loading-page {
@@ -96,6 +115,21 @@ a {
         transform: rotate(1turn)
     }
 }
+
+/* Slider Styles */
+.dots {
+    display: block;
+    background-color: var(--cream);
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 500px;
+}
+
+.slick-dots li.slick-active .dots {
+    background-color: var(--red);
+    border: 2px var(--cream) solid;
+}
+
 
 /* Forms */
 

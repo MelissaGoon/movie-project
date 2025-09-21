@@ -7,27 +7,33 @@ import { MOVIE_LISTS } from "../globals/global-variables";
 import { useConfig } from '../context/ConfigContext';
 
 const HomeHeroSlider = () => {
+    const config = useConfig();
 
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [activeSlideNum, setActiveSlideNum] = useState(0);
 
-    // TODO: set to fade? and use https://react-slick.neostack.com/docs/example/slide-change-hooks 
-    // to implement bg change
     const settings = {
         dots: true,
         infinite: true,
+        // autoplay: true,
+        // autoplaySpeed: 7000,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
         afterChange: current => {
             setActiveSlideNum(current);
-            console.log(current);
         },
-    };
+        customPaging: function () {
+            return (
+                // TODO: make it look
+                <button className="dots"></button>
+            );
+        },
+        dotsClass: "ghostly-dots, ghostly-thumb",
 
-    const config = useConfig();
+    };
 
 
 
@@ -52,15 +58,17 @@ const HomeHeroSlider = () => {
 
 
     if (loading) {
-        return (<div className={styles.slider_container} >
+        return (<div className={styles.slider_container}  >
             <div className="loader"></div>
         </div>);
-    } else if (movies) {
+    } else if (movies.length > 0) {
 
         return (
-            <div className={styles.slider_container} style={{
-                backgroundImage: `url(${image_base_url}${backdrop_size}${movies[activeSlideNum].backdrop_path})`,
-            }}>
+            <div className={styles.slider_container}>
+
+                <img className={styles.slider_bg}
+                    src={`${image_base_url}${backdrop_size}${movies[activeSlideNum].backdrop_path}`} alt={`Backdrop for ${movies[activeSlideNum].title}`} />
+
                 <Slider {...settings}>
                     {
                         movies.map((movie) => {
