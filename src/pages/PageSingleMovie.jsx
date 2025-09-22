@@ -6,6 +6,7 @@ import { fetchSingleMovie } from "../globals/global-utils";
 import { useConfig } from '../context/ConfigContext';
 import MovieInfo from "../components/MovieInfo";
 import Button from "../components/Button";
+import CastGallery from "../components/CastGallery";
 
 const PageSingleMovie = () => {
     const config = useConfig();
@@ -71,7 +72,12 @@ const PageSingleMovie = () => {
 
                     <section className={styles.cast}>
                         <h2>Cast</h2>
-                        <p>{movieDetails.overview}</p>
+                        <CastGallery data={movieDetails} />
+                    </section>
+
+                    <section className={styles.recommended}>
+                        <h2>Recommended</h2>
+
                     </section>
 
                 </div>
