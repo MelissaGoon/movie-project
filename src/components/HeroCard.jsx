@@ -9,6 +9,8 @@ const HeroCard = ({ data }) => {
     const config = useConfig();
 
     const image_base_url = config.images.base_url;
+    // TODO: implement use media query to get the retreived image sizes dynamically  
+    //  const isMobile = useMediaQuery({ maxWidth: 767 });
     const image_size = config.images.poster_sizes[5];
 
 
@@ -24,7 +26,7 @@ const HeroCard = ({ data }) => {
             <img className={styles.poster} src={`${image_base_url}${image_size}${data.poster_path}`} alt={`Poster for ${data.title}`} />
 
             <div className='slide-right'>
-                <MovieInfo styles={styles} data={data} />
+                <MovieInfo styles={styles} data={data} details={false} />
 
                 <Button text="See More" classes="border-cream" onClick={handleBtnClick} />
             </div>

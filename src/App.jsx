@@ -14,7 +14,7 @@ const App = () => {
             try {
                 const [imgConfigResp, genreConfigResp] = await Promise.all([
                     fetch(`${CONFIG_URL}?api_key=${API_KEY}`),
-                    fetch(`${GENRE_URL}&api_key=${API_KEY}`)
+                    fetch(`${GENRE_URL}&api_key=${API_KEY}`),
                 ])
 
                 const [imgConfig, genreConfig] = await Promise.all([imgConfigResp.json(), genreConfigResp.json()]);

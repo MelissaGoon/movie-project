@@ -21,10 +21,10 @@ export const fetchMovies = async (section) => {
 // Fetch similar movies
 
 
-// Fetch single movie
+// Fetch single movie with release dates, credits and recommendations
 export const fetchSingleMovie = async (id) => {
     try {
-        const response = await fetch(`${BASE_URL_MOVIES}/${id}?api_key=${API_KEY}&language=en-US`);
+        const response = await fetch(`${BASE_URL_MOVIES}/${id}?append_to_response=release_dates%2Ccredits%2Crecommendations&api_key=${API_KEY}&language=en-US`);
         if (!response.ok) {
             throw new Error(`API error: ${response.status}`);
         }
@@ -37,3 +37,86 @@ export const fetchSingleMovie = async (id) => {
     }
 }
 
+
+// Get theatrical release age rating of movie from fetchSingleMovie() object, Canadian or if not found US, else return "NR"
+export const getAgeRating = (data) => {
+    const releaseDates = data.release_dates.results;
+
+    const canada = releaseDates.find(dateInfo => dateInfo.iso_3166_1 === "CA");
+    const us = releaseDates.find(dateInfo => dateInfo.iso_3166_1 === "US");
+
+    // Look at canada first
+    if (canada !== undefined) {
+        // Find theatrical release
+        const dateObjList = canada.release_dates.filter(d => d.type === 3);
+        if (dateObjList != []) {
+            // Return the first age rating found
+            for (let i = 0; i < dateObjList.length; i++) {
+                if (dateObjList[i].certification !== "") {
+                    return `${dateObjList[i].certification} (CA)`;
+                }
+            }
+
+        }
+    }
+
+    if (us !== undefined) {
+        // Find theatrical release
+        const dateObjList = us.release_dates.filter(d => d.type === 3);
+        if (dateObjList != []) {
+            // Return the first age rating found
+            for (let i = 0; i < dateObjList.length; i++) {
+                if (dateObjList[i].certification !== "") {
+                    return `${dateObjList[i].certification} (US)`;
+                }
+            }
+
+        }
+    }
+
+
+    return "NR";
+}
+
+
+// Get the director(s) of a movie from fetchSingleMovie() object
+export const getDirector = (data) => {
+    const crew = data.credits.crew;
+    const directors = crew.filter(c => c.job === "Director");
+
+    if (directors.length == 0) {
+        return null;
+    } else {
+        return { Director: directors.map(member => member.name) }
+    };
+}
+
+// Get a writing credit from a movie from fetchSingleMovie() object
+export const getWritingCredits = (data) => {
+    const crew = data.credits.crew;
+    const writers = crew.filter(member => member.department === "Writing");
+
+    if (writers.length === 0) {
+        return null;
+    }
+
+    // Get people with job "Writer"
+    let job = "Writer";
+    let selected = writers.filter(member => member.job === job);
+
+    // Else get people with job "Screenplay"
+    if (selected.length === 0) {
+        job = "Screenplay";
+        selected = writers.filter(member => member.job === job);
+    }
+
+    // Else get a random writing credit
+    if (selected.length === 0) {
+        job = writers[0].job;
+        selected = writers.filter(member => member.job === job);
+    }
+
+    return {
+        [job]: selected.map(member => member.name)
+    };
+}

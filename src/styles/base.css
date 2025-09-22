@@ -86,6 +86,11 @@ button {
     &.border-cream {
         border: 2px solid var(--cream);
     }
+
+    &.body-cream {
+        color: var(--red);
+        background-color: var(--cream);
+    }
 }
 
 /*# Elements #*/

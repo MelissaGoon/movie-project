@@ -13,7 +13,7 @@ const Button = ({ classes, text, icon, onClick }) => {
     if (icon) {
         return (
             <button className={classes} onClick={onClick}>
-                <img src="icon" alt="" />
+                <img src={icon} alt="" />
                 <span> {text}</span> </button>
         )
     } else {
