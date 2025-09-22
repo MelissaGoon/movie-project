@@ -1,18 +1,19 @@
 import Slider from "react-slick";
 import HeroCard from "./HeroCard";
 import styles from '../styles/modules/HeroSlider.module.css';
-import { useEffect, useState } from "react";
-import { fetchMovies } from "../globals/global-utils";
-import { MOVIE_LISTS } from "../globals/global-variables";
 import { useConfig } from '../context/ConfigContext';
+import { useState, useEffect } from "react";
 
-const HomeHeroSlider = () => {
+const HomeHeroSlider = ({ popularArray }) => {
     const config = useConfig();
 
     const [movies, setMovies] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
     const [activeSlideNum, setActiveSlideNum] = useState(0);
+
+    useEffect(() => {
+        setMovies(popularArray.slice(0, 6));
+    }, [popularArray]);
+
 
     const settings = {
         dots: true,
@@ -42,26 +43,7 @@ const HomeHeroSlider = () => {
     //  const isMobile = useMediaQuery({ maxWidth: 767 });
     const backdrop_size = config.images.backdrop_sizes[3];
 
-    useEffect(() => {
-        async function loadMovies() {
-            try {
-                const m = await fetchMovies(MOVIE_LISTS.nowPlaying);
-                setMovies(m.slice(0, 6));
-            } catch (err) {
-                setError(err.message || "Error loading movies, please try again later.");
-            } finally {
-                setLoading(false);
-            }
-        }
-        loadMovies();
-    }, []);
-
-
-    if (loading) {
-        return (<div className={styles.slider_container}  >
-            <div className="loader"></div>
-        </div>);
-    } else if (movies.length > 0) {
+    if (movies.length > 0) {
 
         return (
             <div className={styles.slider_container}>
@@ -79,9 +61,8 @@ const HomeHeroSlider = () => {
             </div>
         );
     } else {
-        // Error
         return (<div className={styles.slider_container} >
-            <p>{error}</p>
+            <p>Something went wrong...</p>
         </div>);
 
     }

@@ -7,6 +7,7 @@ import { useConfig } from '../context/ConfigContext';
 import MovieInfo from "../components/MovieInfo";
 import Button from "../components/Button";
 import CastGallery from "../components/CastGallery";
+import { Link } from "react-router-dom";
 
 const PageSingleMovie = () => {
     const config = useConfig();
@@ -87,9 +88,10 @@ const PageSingleMovie = () => {
             </main>
         )
     } else {
-        return (<main>
-            <h1>Error</h1>
+        return (<main className="error-page">
+            <h1>This page does not extist...</h1>
             <p>{error}</p>
+            <Link to="/"> Go Home </Link>
         </main>)
     }
 

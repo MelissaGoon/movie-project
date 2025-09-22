@@ -8,6 +8,7 @@ const App = () => {
     const API_KEY = import.meta.env.VITE_API_KEY;
     const [config, setConfig] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         async function fetchConfig() {
@@ -25,11 +26,7 @@ const App = () => {
                 })
             } catch (e) {
                 console.error(e.message);
-                return (<div className="error-page">
-                    <h1>Something went wrong</h1>
-                    <p>We couldn’t load the application configuration.</p>
-                    <button onClick={() => window.location.reload()}>Retry</button>
-                </div>)
+                setError(true);
 
             } finally {
                 setLoading(false);
@@ -47,6 +44,14 @@ const App = () => {
                 <div className="loader"></div>
             </div>
         );
+    }
+
+    if (error) {
+        return (<div className="error-page">
+            <h1>Something went wrong</h1>
+            <p>We couldn’t load the application configuration.</p>
+            <button onClick={() => window.location.reload()}>Retry</button>
+        </div>)
     }
 
     return (

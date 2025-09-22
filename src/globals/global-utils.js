@@ -18,9 +18,6 @@ export const fetchMovies = async (section) => {
     }
 }
 
-// Fetch similar movies
-
-
 // Fetch single movie with release dates, credits and recommendations
 export const fetchSingleMovie = async (id) => {
     try {
@@ -119,4 +116,15 @@ export const getWritingCredits = (data) => {
     return {
         [job]: selected.map(member => member.name)
     };
+}
+
+// Get a runtime in hours and minutes from a movie from fetchSingleMovie() object
+export const getRuntime = (data) => {
+    const runtimeMins = data.runtime;
+
+    const hours = Math.floor(runtimeMins / 60);
+    const mins = runtimeMins % 60;
+
+    return `${hours}h ${mins}min`
+
 }

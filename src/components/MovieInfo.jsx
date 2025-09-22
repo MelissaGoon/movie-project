@@ -1,6 +1,6 @@
 import { ASSETS_FOLDER_PATH } from '../globals/global-variables';
 import { useConfig } from '../context/ConfigContext';
-import { getWritingCredits, getDirector, getAgeRating } from '../globals/global-utils';
+import { getWritingCredits, getDirector, getAgeRating, getRuntime } from '../globals/global-utils';
 /**
  * Displays the information of a movie
  * 
@@ -16,6 +16,7 @@ const MovieInfo = ({ styles, data, details }) => {
     const writingCredits = details ? getWritingCredits(data) : null;
     const directingCredits = details ? getDirector(data) : null
     const ageRating = details ? getAgeRating(data) : "";
+    const runtime = details ? getRuntime(data) : "";
 
     return (
 
@@ -27,9 +28,9 @@ const MovieInfo = ({ styles, data, details }) => {
             <div className={styles.miscDetails}>
                 {details && <p className={styles.ageRating}>{ageRating}</p>}
                 <p>{data.release_date}</p>
-
-
             </div>
+
+            {details && <p>{runtime}</p>}
 
 
             <div className={styles.genres}>
