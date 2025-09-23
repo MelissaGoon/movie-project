@@ -144,3 +144,12 @@ export const getRuntime = (data) => {
     return `${hours}h ${mins}min`
 
 }
+
+// Returns if id is in list
+export const isSaved = (list, id) => {
+    if (list.length == 0) {
+        return false;
+    }
+
+    return list.some(item => item.id == id);
+}

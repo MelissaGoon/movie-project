@@ -12,6 +12,8 @@ import SimilarGallery from "../components/SimilarGallery";
 import Poster from "../components/Poster";
 import ErrorPage from "../components/ErrorPage";
 import LoadingPage from "../components/LoadingPage";
+import { useListContext } from "../context/ListContext";
+import { isSaved } from "../globals/global-utils";
 
 const PageSingleMovie = () => {
     const config = useConfig();
@@ -19,12 +21,15 @@ const PageSingleMovie = () => {
     const [movieDetails, setMovieDetails] = useState()
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const { list, addToList, removeFromList } = useListContext();
 
     const image_base_url = config.images.base_url;
     // TODO: implement use media query to get the retreived image sizes dynamically  
     //  const isMobile = useMediaQuery({ maxWidth: 767 });
     const backdrop_size = config.images.backdrop_sizes[3];
     const image_size = config.images.poster_sizes[5];
+
+    console.log(list);
 
     useEffect(() => {
         async function loadMovie() {
@@ -41,8 +46,12 @@ const PageSingleMovie = () => {
         loadMovie();
     }, [id]);
 
-    const handleAddList = () => {
-        console.log("Add to list");
+    const handleButtonClick = (movieObj, remove = false) => {
+        if (remove) {
+            removeFromList(movieObj);
+        } else {
+            addToList(movieObj);
+        }
     }
 
     if (loading) {
@@ -63,7 +72,10 @@ const PageSingleMovie = () => {
 
                         <div className={styles.info_right}>
                             <MovieInfo data={movieDetails} styles={styles} details={true} />
-                            <Button classes="body-cream" text="Add to List" onClick={handleAddList} icon={`${ASSETS_FOLDER_PATH}not-saved.svg`} />
+
+                            {isSaved(list, id) ? <Button text="Remove from List" onClick={() => handleButtonClick(movieDetails, true)} icon={`${ASSETS_FOLDER_PATH}saved-cream.svg`} /> :
+                                <Button classes="body-cream" text="Add to List" onClick={() => handleButtonClick(movieDetails, false)} icon={`${ASSETS_FOLDER_PATH}not-saved.svg`} />}
+
                         </div>
                     </section>
 
