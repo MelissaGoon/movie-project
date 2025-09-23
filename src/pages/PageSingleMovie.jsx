@@ -1,19 +1,21 @@
-import { useParams } from "react-router-dom";
-import { ASSETS_FOLDER_PATH } from '../globals/global-variables';
-import styles from '../styles/modules/SingleMovie.module.css';
 import { useEffect, useState } from "react";
-import { fetchSingleMovie } from "../globals/global-utils";
+import { useParams, Link } from "react-router-dom";
+
+import { ASSETS_FOLDER_PATH } from '../globals/global-variables';
+import { fetchSingleMovie, isSaved } from "../globals/global-utils";
+
 import { useConfig } from '../context/ConfigContext';
+import { useListContext } from "../context/ListContext";
+
+import styles from '../styles/modules/SingleMovie.module.css';
+
 import MovieInfo from "../components/MovieInfo";
 import Button from "../components/Button";
 import CastGallery from "../components/CastGallery";
-import { Link } from "react-router-dom";
 import SimilarGallery from "../components/SimilarGallery";
 import Poster from "../components/Poster";
 import ErrorPage from "../components/ErrorPage";
 import LoadingPage from "../components/LoadingPage";
-import { useListContext } from "../context/ListContext";
-import { isSaved } from "../globals/global-utils";
 
 const PageSingleMovie = () => {
     const config = useConfig();

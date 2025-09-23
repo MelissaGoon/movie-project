@@ -5,10 +5,15 @@ import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 import Rating from './Rating';
 import Poster from './Poster';
+import { isSaved } from '../globals/global-utils';
+import { useListContext } from '../context/ListContext';
 
 const MovieCard = ({ data }) => {
     const config = useConfig();
     let navigate = useNavigate();
+    const { list, addToList, removeFromList } = useListContext()
+    let saved = isSaved(list, data.id);
+
 
     // Excludes collections
     if (data.vote_average == null) {
@@ -25,24 +30,35 @@ const MovieCard = ({ data }) => {
         });
     }
 
-    return (
-        <article className={styles.card}>
-            <Poster styles={styles} data={data} image_size={image_size} />
-            {/* <div className="btn-favourite">
-                {isFav ?
-                    <button onClick={() => handleFavClick(kittenOb, true)} >Remove from Favs</button>
-                    :
-                    <button onClick={() => handleFavClick(kittenOb, false)}>Add to Favs</button>
-                }
-            </div> */}
+    const handleSaveClick = (movieObj) => {
+        if (saved) {
+            removeFromList(movieObj);
+        } else {
+            addToList(movieObj);
+        }
 
+    }
+
+    return (
+        <article className={styles.card + (saved ? ` ${styles.saved}` : "")}>
+            <Poster styles={styles} data={data} image_size={image_size} />
+
+
+            <button className={styles.save_btn} onClick={() => handleSaveClick(data)}>
+                {saved ?
+                    <><img src={`${ASSETS_FOLDER_PATH}/saved.svg`} alt="Unsave iscon" />
+                        <span className='screen-reader-text'>Remove From List</span> </> :
+                    <><img src={`${ASSETS_FOLDER_PATH}/not-saved.svg`} alt="Save Icon" />
+                        <span className='screen-reader-text'>Save to List</span>
+                    </>}
+            </button>
 
             <section className={styles.body_content}>
                 <h3>{data.title}</h3>
                 <p>{data.release_date}</p>
                 <Rating vote_average={data.vote_average} vote_count={data.vote_count} styles={styles} />
 
-                <p>{data.overview}</p>
+                <p className={styles.overview}>{data.overview}</p>
 
                 <Button classes="small" onClick={handleSeeMore} text="See More" />
 
