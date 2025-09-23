@@ -3,6 +3,7 @@ import { fetchMovies } from "../globals/global-utils";
 import HomeHeroSlider from "../components/HomeHeroSlider";
 import { MOVIE_LISTS } from "../globals/global-variables";
 import ListGallery from "../components/ListGallery";
+import LoadingPage from "../components/LoadingPage";
 
 const PageHome = () => {
     const [loading, setLoading] = useState(true);
@@ -41,18 +42,15 @@ const PageHome = () => {
 
 
     if (loading) {
-        return (<main className="loading-page">
-            <h1>Loading Movies...</h1>
-            <div className="loader"></div>
-        </main>);
+        return (<LoadingPage text="Loading Movies..." />);
     }
 
     if (error) {
-        return (<div className="error-page">
+        return (<main className="error-page">
             <h1>Something went wrong</h1>
             <p>We couldn’t load the application.</p>
             <button onClick={() => window.location.reload()}>Retry</button>
-        </div>)
+        </main>)
     }
 
     return (

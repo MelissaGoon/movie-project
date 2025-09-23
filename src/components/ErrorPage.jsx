@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from "react-router-dom"
 
 const ErrorPage = ({ text, error_msg }) => {
 

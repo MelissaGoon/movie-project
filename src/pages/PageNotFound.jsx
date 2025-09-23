@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom"
+import ErrorPage from "../components/ErrorPage"
 const PageNotFound = () => {
-    return (
-        <main className="error-page">
-            <h1>Page Not Found</h1>
-            <Link to="/"> Go Home </Link>
-        </main>
-    )
+    return <ErrorPage text="Page Not Found" />;
+
 }
 
 export default PageNotFound

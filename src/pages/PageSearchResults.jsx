@@ -4,6 +4,8 @@ import MovieCard from "../components/MovieCard";
 import { fetchSearchMovies } from "../globals/global-utils";
 import styles from '../styles/modules/SearchResults.module.css';
 import { Link } from "react-router-dom";
+import ErrorPage from "../components/ErrorPage";
+import LoadingPage from "../components/LoadingPage";
 const PageSearchResults = () => {
     const [searchParams] = useSearchParams();
     const query = searchParams.get('q');
@@ -28,25 +30,15 @@ const PageSearchResults = () => {
     }, [query]);
 
     if (loading) {
-        return (<main className="loading-page">
-            <h1>Loading results...</h1>
-            <div className="loader"></div>
-        </main>);
+        return (<LoadingPage text="Loading results..." />);
     }
 
     if (error) {
-        return (<main className="error-page">
-            <h1>Something went wrong...</h1>
-            <p>{error}</p>
-            <Link to="/"> Go Home </Link>
-        </main>)
+        return (<ErrorPage text="Something went wrong..." error_msg={error} />)
     }
 
     if (results.length == 0) {
-        return (<main className="error-page">
-            <h1>Hmm, we couldn't find anything matching your search...</h1>
-            <Link to="/"> Go Home </Link>
-        </main>)
+        return (<ErrorPage text="Hmm, we couldn't find anything matching your search..." />)
     }
 
     return (

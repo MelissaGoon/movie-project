@@ -99,7 +99,7 @@ button {
 }
 
 /*# Elements #*/
-/* Loader */
+/* Loading and error pages */
 .loading-page,
 .error-page {
     background-color: var(--black);

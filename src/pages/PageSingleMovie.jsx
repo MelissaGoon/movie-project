@@ -10,6 +10,8 @@ import CastGallery from "../components/CastGallery";
 import { Link } from "react-router-dom";
 import SimilarGallery from "../components/SimilarGallery";
 import Poster from "../components/Poster";
+import ErrorPage from "../components/ErrorPage";
+import LoadingPage from "../components/LoadingPage";
 
 const PageSingleMovie = () => {
     const config = useConfig();
@@ -44,10 +46,7 @@ const PageSingleMovie = () => {
     }
 
     if (loading) {
-        return (<main className="loading-page">
-            <h1>Loading app...</h1>
-            <div className="loader"></div>
-        </main>);
+        return (<LoadingPage text="Loading app..." />);
     } else if (movieDetails) {
         return (
             <main>
@@ -92,11 +91,7 @@ const PageSingleMovie = () => {
             </main>
         )
     } else {
-        return (<main className="error-page">
-            <h1>This page does not exist...</h1>
-            <p>{error}</p>
-            <Link to="/"> Go Home </Link>
-        </main>)
+        return (<ErrorPage text="This page does not exist..." error_msg={error} />)
     }
 
 }
