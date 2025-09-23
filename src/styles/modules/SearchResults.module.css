@@ -1,0 +1,6 @@
+.result_gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: var(--desktop-max-w);
+}

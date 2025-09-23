@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchMovies } from "../globals/global-utils";
 import HomeHeroSlider from "../components/HomeHeroSlider";
 import { MOVIE_LISTS } from "../globals/global-variables";
+import ListGallery from "../components/ListGallery";
 
 const PageHome = () => {
     const [loading, setLoading] = useState(true);
@@ -12,7 +13,6 @@ const PageHome = () => {
     const [topRated, setTopRated] = useState([]);
 
     useEffect(() => {
-        console.log("useEffect ran");
 
         async function loadAll() {
             try {
@@ -57,7 +57,13 @@ const PageHome = () => {
 
     return (
         <main>
+            <h1 className="screen-reader-text">ghostlyDB</h1>
             <HomeHeroSlider popularArray={popular} />
+
+            <ListGallery movieArray={upcoming} title="Upcoming" id="upcoming" />
+            <ListGallery movieArray={popular} title="Popular" id="popular" />
+            <ListGallery movieArray={nowPlaying} title="Now Playing" id="nowPlaying" />
+            <ListGallery movieArray={topRated} title="Top Rated" id="topRated" />
 
 
         </main>

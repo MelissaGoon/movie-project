@@ -1,7 +1,10 @@
-
+import { Link } from "react-router-dom"
 const PageNotFound = () => {
     return (
-        <main><div>PageNotFound</div></main>
+        <main className="error-page">
+            <h1>Page Not Found</h1>
+            <Link to="/"> Go Home </Link>
+        </main>
     )
 }
 

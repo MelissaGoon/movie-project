@@ -14,9 +14,9 @@ const Nav = () => {
                         <div className="explore-dropdown">
                             <ul className="explore-links">
                                 <li><NavLink to='/#popular'>Popular</NavLink></li>
-                                <li><NavLink to='/#now-playing'>Now Playing</NavLink></li>
+                                <li><NavLink to='/#nowPlaying'>Now Playing</NavLink></li>
                                 <li><NavLink to='/#upcoming'>Upcoming</NavLink></li>
-                                <li><NavLink to='/#top-rated'>Top Rated</NavLink></li>
+                                <li><NavLink to='/#topRated'>Top Rated</NavLink></li>
                             </ul>
                         </div>
                     </li>

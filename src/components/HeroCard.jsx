@@ -3,12 +3,12 @@ import MovieInfo from './MovieInfo';
 import { useConfig } from '../context/ConfigContext';
 import { useNavigate } from 'react-router-dom';
 import Button from './Button';
+import Poster from './Poster';
 
 const HeroCard = ({ data }) => {
     let navigate = useNavigate();
     const config = useConfig();
 
-    const image_base_url = config.images.base_url;
     // TODO: implement use media query to get the retreived image sizes dynamically  
     //  const isMobile = useMediaQuery({ maxWidth: 767 });
     const image_size = config.images.poster_sizes[5];
@@ -23,8 +23,7 @@ const HeroCard = ({ data }) => {
     return (
         <article className={styles.card}>
 
-            <img className={styles.poster} src={`${image_base_url}${image_size}${data.poster_path}`} alt={`Poster for ${data.title}`} />
-
+            <Poster styles={styles} data={data} image_size={image_size} />
             <div className='slide-right'>
                 <MovieInfo styles={styles} data={data} details={false} />
 

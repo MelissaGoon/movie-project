@@ -23,7 +23,8 @@ const Search = () => {
     return (
         <search>
             <form onSubmit={handleSubmit}>
-                <input type="search" id="movie" name="movie" />
+                <label htmlFor="movie" className="screen-reader-text">Search Movies: </label>
+                <input type="search" id="movie" name="movie" placeholder="Search Movies" />
                 <button type="submit">Search</button>
             </form>
         </search>

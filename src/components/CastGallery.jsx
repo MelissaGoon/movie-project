@@ -27,7 +27,7 @@ const CastGallery = ({ data }) => {
         <Slider {...settings}>
             {
                 castArray.map((castMember) => {
-                    let imageURL = castMember.profile_path ? `${image_base_url}${profile_size}${castMember.profile_path}` : `${ASSETS_FOLDER_PATH}profile-not-found.svg`;
+                    let imageURL = castMember.profile_path ? `${image_base_url}${profile_size}${castMember.profile_path}` : `${ASSETS_FOLDER_PATH}image-not-found.svg`;
                     return (<CastItem key={castMember.id} name={castMember.name} role={castMember.character}
                         imageURL={imageURL} />)
                 })

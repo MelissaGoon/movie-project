@@ -2,23 +2,27 @@ import styles from '../styles/modules/MovieCard.module.css';
 import { useConfig } from '../context/ConfigContext';
 import { ASSETS_FOLDER_PATH } from '../globals/global-variables';
 import Button from './Button';
+import { useNavigate } from 'react-router-dom';
+import Rating from './Rating';
+import Poster from './Poster';
 
 const MovieCard = ({ data }) => {
     const config = useConfig();
-
-    const image_base_url = config.images.base_url;
+    let navigate = useNavigate();
 
     // TODO: implement use media query to get the retreived image sizes dynamically  
     //  const isMobile = useMediaQuery({ maxWidth: 767 });
     const image_size = config.images.poster_sizes[5];
 
     const handleSeeMore = () => {
-        console.log("See more");
+        navigate({
+            pathname: `/movie/${data.id}`
+        });
     }
 
     return (
         <article className={styles.card}>
-            <img className={styles.poster} src={`${image_base_url}${image_size}${data.poster_path}`} alt={`Poster for ${data.title}`} />
+            <Poster styles={styles} data={data} image_size={image_size} />
             {/* <div className="btn-favourite">
                 {isFav ?
                     <button onClick={() => handleFavClick(kittenOb, true)} >Remove from Favs</button>
@@ -31,10 +35,7 @@ const MovieCard = ({ data }) => {
             <section className={styles.body_content}>
                 <h3>{data.title}</h3>
 
-                <div className={styles.rating}>
-                    <img src={`${ASSETS_FOLDER_PATH}star-red.svg`} alt="A red star icon" />
-                    <p>{data.vote_average.toFixed(2)}</p>
-                </div>
+                <Rating vote_average={data.vote_average} vote_count={data.vote_count} styles={styles} />
 
                 <p>{data.overview}</p>
 
@@ -59,10 +60,7 @@ const MovieCard = ({ data }) => {
     //         <section className={styles.body_content}>
     //             <h3>{data.title}</h3>
 
-    //             <div className={styles.rating}>
-    //                 <img src={`${ASSETS_FOLDER_PATH}star-red.svg`} alt="A red star icon" />
-    //                 <p>{data.vote_average.toFixed(2)}</p>
-    //             </div>
+    //             <Rating vote_average={data.vote_average} vote_count={data.vote_count} styles={styles} />
 
     //         </section>
     //     </a>

@@ -1,4 +1,4 @@
-import { BASE_URL_MOVIES } from "./global-variables";
+import { BASE_URL_MOVIES, BASE_URL_SEARCH_MOVIES } from "./global-variables";
 const API_KEY = import.meta.env.VITE_API_KEY;
 
 
@@ -6,6 +6,22 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 export const fetchMovies = async (section) => {
     try {
         const response = await fetch(`${BASE_URL_MOVIES}/${section}?api_key=${API_KEY}&language=en-US&page=1`);
+        if (!response.ok) {
+            throw new Error(`API error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data.results || [];
+    } catch (e) {
+        console.error(e.message);
+        return [];
+    }
+}
+
+// Fetch movies from a search query
+export const fetchSearchMovies = async (query) => {
+    try {
+        const response = await fetch(`${BASE_URL_SEARCH_MOVIES}?query=${query}&api_key=${API_KEY}&include_adult=false&language=en-US&page=1`);
         if (!response.ok) {
             throw new Error(`API error: ${response.status}`);
         }

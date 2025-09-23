@@ -7,10 +7,14 @@ import PageNotFound from '../pages/PageNotFound';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import PageSearchResults from '../pages/PageSearchResults';
+import ScrollHandler from './ScrollHandler';
 
 const AppRouter = () => {
+
     return (
         <BrowserRouter>
+            <ScrollHandler />
+
             <header>
                 <Nav />
             </header>

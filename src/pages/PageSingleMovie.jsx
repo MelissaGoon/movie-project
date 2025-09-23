@@ -8,6 +8,8 @@ import MovieInfo from "../components/MovieInfo";
 import Button from "../components/Button";
 import CastGallery from "../components/CastGallery";
 import { Link } from "react-router-dom";
+import SimilarGallery from "../components/SimilarGallery";
+import Poster from "../components/Poster";
 
 const PageSingleMovie = () => {
     const config = useConfig();
@@ -58,7 +60,7 @@ const PageSingleMovie = () => {
 
                 <div className={styles.movie_contents}>
                     <section className={styles.main_info}>
-                        <img className={styles.poster} src={`${image_base_url}${image_size}${movieDetails.poster_path}`} alt={`Poster for ${movieDetails.title}`} />
+                        <Poster styles={styles} data={movieDetails} image_size={image_size} />
 
                         <div className={styles.info_right}>
                             <MovieInfo data={movieDetails} styles={styles} details={true} />
@@ -76,10 +78,12 @@ const PageSingleMovie = () => {
                         <CastGallery data={movieDetails} />
                     </section>
 
-                    <section className={styles.recommended}>
-                        <h2>Recommended</h2>
-
+                    <section className={styles.recs}>
+                        <h2>Viewers Also Watched</h2>
+                        <SimilarGallery movieArray={movieDetails.recommendations.results.slice(0, 8)} />
                     </section>
+
+
 
                 </div>
 
@@ -89,7 +93,7 @@ const PageSingleMovie = () => {
         )
     } else {
         return (<main className="error-page">
-            <h1>This page does not extist...</h1>
+            <h1>This page does not exist...</h1>
             <p>{error}</p>
             <Link to="/"> Go Home </Link>
         </main>)

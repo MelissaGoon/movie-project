@@ -35,7 +35,7 @@ const App = () => {
 
         fetchConfig();
 
-    }, []);
+    }, [API_KEY]);
 
     if (loading) {
         return (

@@ -4,6 +4,7 @@
     --red: #A30D0B;
     --cream: #FFF9ED;
     --pink: #FF888C;
+    --desktop-max-w: 50rem;
 }
 
 html {}
@@ -28,6 +29,9 @@ h6 {
 
 p {}
 
+.capitalize {
+    text-transform: capitalize;
+}
 
 @media (min-width:48em) {
     p {}

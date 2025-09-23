@@ -1,6 +1,7 @@
 import { ASSETS_FOLDER_PATH } from '../globals/global-variables';
 import { useConfig } from '../context/ConfigContext';
 import { getWritingCredits, getDirector, getAgeRating, getRuntime } from '../globals/global-utils';
+import Rating from './Rating';
 /**
  * Displays the information of a movie
  * 
@@ -45,10 +46,7 @@ const MovieInfo = ({ styles, data, details }) => {
 
             </div>
 
-            <div className={styles.rating}>
-                <img src={`${ASSETS_FOLDER_PATH}star-red.svg`} alt="A red star icon" />
-                <p>{data.vote_average.toFixed(2)}</p>
-            </div>
+            <Rating vote_average={data.vote_average} vote_count={data.vote_count} styles={styles} />
 
             {details && <div className={styles.crew}>
                 {directingCredits && Object.entries(directingCredits).map(([job, names]) => (
