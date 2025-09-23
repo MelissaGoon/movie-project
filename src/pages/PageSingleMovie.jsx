@@ -80,10 +80,10 @@ const PageSingleMovie = () => {
                         </div>
                     </section>
 
-                    <section className={styles.overview}>
+                    {movieDetails.overview && <section className={styles.overview}>
                         <h2>Overview</h2>
                         <p>{movieDetails.overview}</p>
-                    </section>
+                    </section>}
 
                     {movieDetails.credits.cast.length > 0 && <section className={styles.cast}>
                         <h2>Cast</h2>
