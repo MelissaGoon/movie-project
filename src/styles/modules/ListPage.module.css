@@ -1,0 +1,5 @@
+.saved_gallery {
+    max-width: var(--desktop-max-w);
+    display: flex;
+    flex-wrap: wrap;
+}

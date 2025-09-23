@@ -34,7 +34,8 @@ function listReducer(state, action) {
                     release_date: action.payload.release_date,
                     overview: action.payload.overview,
                     vote_average: action.payload.vote_average,
-                    vote_count: action.payload.vote_count
+                    vote_count: action.payload.vote_count,
+                    backdrop_path: action.payload.backdrop_path
                 }
 
                 const newList = [...state.items, movieObjCore];
