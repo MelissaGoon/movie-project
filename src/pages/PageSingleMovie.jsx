@@ -31,8 +31,6 @@ const PageSingleMovie = () => {
     const backdrop_size = config.images.backdrop_sizes[3];
     const image_size = config.images.poster_sizes[5];
 
-    console.log(list);
-
     useEffect(() => {
         async function loadMovie() {
             try {
@@ -62,7 +60,8 @@ const PageSingleMovie = () => {
         return (
             <main>
                 <section className={styles.hero} style={{
-                    backgroundImage: `url(${image_base_url}${backdrop_size}${movieDetails.backdrop_path})`
+                    backgroundImage: `url(${movieDetails.backdrop_path ? `${image_base_url}${backdrop_size}${movieDetails.backdrop_path}` : `${ASSETS_FOLDER_PATH}placeholder-background.svg`
+                        })`
                 }}>
                     <h1>{movieDetails.title}</h1>
                     <p>{movieDetails.tagline}</p>
@@ -86,15 +85,16 @@ const PageSingleMovie = () => {
                         <p>{movieDetails.overview}</p>
                     </section>
 
-                    <section className={styles.cast}>
+                    {movieDetails.credits.cast.length > 0 && <section className={styles.cast}>
                         <h2>Cast</h2>
                         <CastGallery data={movieDetails} />
-                    </section>
+                    </section>}
 
-                    <section className={styles.recs}>
-                        <h2>Viewers Also Watched</h2>
-                        <SimilarGallery movieArray={movieDetails.recommendations.results.slice(0, 8)} />
-                    </section>
+                    {movieDetails.recommendations.length > 0 &&
+                        <section className={styles.recs}>
+                            <h2>Viewers Also Watched</h2>
+                            <SimilarGallery movieArray={movieDetails.recommendations.results.slice(0, 8)} />
+                        </section>}
 
 
 

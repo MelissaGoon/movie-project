@@ -3,6 +3,7 @@ import HeroCard from "./HeroCard";
 import styles from '../styles/modules/HeroSlider.module.css';
 import { useConfig } from '../context/ConfigContext';
 import { useState, useEffect } from "react";
+import { ASSETS_FOLDER_PATH } from "../globals/global-variables";
 
 const HomeHeroSlider = ({ popularArray }) => {
     const config = useConfig();
@@ -49,7 +50,7 @@ const HomeHeroSlider = ({ popularArray }) => {
             <div className={styles.slider_container}>
 
                 <img className={styles.slider_bg}
-                    src={`${image_base_url}${backdrop_size}${movies[activeSlideNum].backdrop_path}`} alt={`Backdrop for ${movies[activeSlideNum].title}`} />
+                    src={movies[activeSlideNum].backdrop_path ? `${image_base_url}${backdrop_size}${movies[activeSlideNum].backdrop_path}` : `${ASSETS_FOLDER_PATH}placeholder-background.svg`} alt={`Backdrop for ${movies[activeSlideNum].title}`} />
 
                 <Slider {...settings}>
                     {
