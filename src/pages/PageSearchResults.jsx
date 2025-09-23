@@ -41,6 +41,7 @@ const PageSearchResults = () => {
         return (<ErrorPage text="Hmm, we couldn't find anything matching your search..." />)
     }
 
+    console.log(results);
     return (
         <main>
             <h1>Search results for: <span className="capitalize">{query}</span></h1>

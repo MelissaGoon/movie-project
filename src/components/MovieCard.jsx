@@ -10,6 +10,11 @@ const MovieCard = ({ data }) => {
     const config = useConfig();
     let navigate = useNavigate();
 
+    // Excludes collections
+    if (data.vote_average == null) {
+        return "";
+    }
+
     // TODO: implement use media query to get the retreived image sizes dynamically  
     //  const isMobile = useMediaQuery({ maxWidth: 767 });
     const image_size = config.images.poster_sizes[5];
@@ -34,7 +39,7 @@ const MovieCard = ({ data }) => {
 
             <section className={styles.body_content}>
                 <h3>{data.title}</h3>
-
+                <p>{data.release_date}</p>
                 <Rating vote_average={data.vote_average} vote_count={data.vote_count} styles={styles} />
 
                 <p>{data.overview}</p>

@@ -27,7 +27,17 @@ function listReducer(state, action) {
     switch (action.type) {
         case 'ADD':
             {
-                const newList = [...state.items, action.payload];
+                const movieObjCore = {
+                    id: action.payload.id,
+                    title: action.payload.title,
+                    poster_path: action.payload.poster_path,
+                    release_date: action.payload.release_date,
+                    overview: action.payload.overview,
+                    vote_average: action.payload.vote_average,
+                    vote_count: action.payload.vote_count
+                }
+
+                const newList = [...state.items, movieObjCore];
                 localStorage.setItem(APP_STORAGE_NAME, JSON.stringify(newList));
 
                 return {
