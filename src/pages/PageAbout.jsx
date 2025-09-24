@@ -1,7 +1,7 @@
 
 const PageAbout = () => {
     return (
-        <main><div>PageAbout</div></main>
+        <main id="site-main"><div>PageAbout</div></main>
     )
 }
 

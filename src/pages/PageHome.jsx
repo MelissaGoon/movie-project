@@ -46,7 +46,7 @@ const PageHome = () => {
     }
 
     if (error) {
-        return (<main className="error-page">
+        return (<main className="error-page" id="site-main">
             <h1>Something went wrong</h1>
             <p>We couldn’t load the application.</p>
             <button onClick={() => window.location.reload()}>Retry</button>
@@ -54,7 +54,7 @@ const PageHome = () => {
     }
 
     return (
-        <main>
+        <main id="site-main">
             <h1 className="screen-reader-text">ghostlyDB</h1>
             <HomeHeroSlider popularArray={popular} />
 

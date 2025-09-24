@@ -43,7 +43,7 @@ const PageSearchResults = () => {
 
     console.log(results);
     return (
-        <main>
+        <main id="site-main">
             <h1>Search results for: <span className="capitalize">{query}</span></h1>
 
             <div className={styles.result_gallery}> {results.map(item => <MovieCard key={item.id} data={item} />)}</div>

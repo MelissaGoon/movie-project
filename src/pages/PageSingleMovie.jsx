@@ -58,7 +58,7 @@ const PageSingleMovie = () => {
         return (<LoadingPage text="Loading app..." />);
     } else if (movieDetails) {
         return (
-            <main>
+            <main id="site-main">
                 <section className={styles.hero} style={{
                     backgroundImage: `url(${movieDetails.backdrop_path ? `${image_base_url}${backdrop_size}${movieDetails.backdrop_path}` : `${ASSETS_FOLDER_PATH}placeholder-background.svg`
                         })`

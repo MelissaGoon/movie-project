@@ -16,7 +16,7 @@ const AppRouter = () => {
         <BrowserRouter>
             <ListProvider>
                 <ScrollHandler />
-
+                <a className='screen-reader-text' href='#site-main'>Skip To Content</a>
                 <header>
                     <Nav />
                 </header>

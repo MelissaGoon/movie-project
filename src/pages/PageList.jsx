@@ -16,7 +16,7 @@ const PageList = () => {
     //  const isMobile = useMediaQuery({ maxWidth: 767 });
     const backdrop_size = config.images.backdrop_sizes[3];
     return (
-        <main>
+        <main id="site-main">
             <section className={styles.hero}
                 style={{
                     backgroundImage: `url(${list.length > 0 && list[0].backdrop_path ?
