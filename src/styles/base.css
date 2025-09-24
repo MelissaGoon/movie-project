@@ -40,12 +40,18 @@ p {}
 /*# Links #*/
 a {
 
-    &:visited {}
+    color: var(--pink);
+    text-underline-offset: 5px;
 
-    &:hover {}
+    &:hover {
+        color: var(--cream);
+    }
 
     &:focus,
-    &:active {}
+    &:active {
+        color: var(--cream);
+        text-decoration: wavy underline;
+    }
 
 }
 
@@ -149,11 +155,145 @@ button {
 /*## Components ##*/
 
 /*# Header #*/
-header {}
+header {
+    background-color: var(--cream);
+    padding: 1rem;
+    font-family: "Playfair Display", serif;
+    position: fixed;
+    z-index: 999;
+    border-radius: 0 0 20px 20px;
+    width: 100vw;
+
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Links and buttons */
+    .logo-link {
+        height: 1.5rem;
+        object-fit: cover;
+
+        img {
+            height: 100%;
+            width: auto;
+        }
+    }
+
+    .search-btn {
+        order: -1;
+    }
+
+    .hamburger-btn,
+    .search-btn {
+        background: none;
+        height: 1.5rem;
+        width: 1.5rem;
+        padding: 0;
+
+        svg {
+            height: 100%;
+
+        }
+
+        &:active,
+        &:focus {
+            svg path {
+                stroke: var(--black);
+            }
+        }
+    }
 
 
 
-nav {}
+    a {
+        color: var(--black);
+        text-decoration: none;
+
+        &:hover {
+            color: var(--red);
+        }
+
+        &:active,
+        &:focus {
+            color: var(--red);
+            text-decoration: underline solid;
+        }
+    }
+
+    /* Nav menu and Search */
+    #nav-menu {
+        position: absolute;
+        top: 0;
+        background-color: var(--cream);
+        right: 0;
+        height: 120vh;
+        width: 50vw;
+        padding: 1rem;
+        padding-top: 4rem;
+        z-index: -1;
+        font-size: 2rem;
+        transition: right 0.5s ease-out;
+
+        ul {
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+            margin: 0.75rem 0;
+        }
+
+        .explore-links {
+            padding-left: 1rem;
+            font-size: 1.5rem;
+        }
+    }
+
+    #nav-menu.hidden {
+        right: -200%;
+    }
+
+    .search-bar {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: var(--cream);
+        padding: 1rem;
+        border-radius: 500px;
+
+
+        form {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+
+            input {
+                width: 60vw;
+            }
+        }
+    }
+
+
+}
+
+
+@media (min-width:48em) {
+
+    header {
+
+        #nav-menu,
+        #nav-menu.hidden {
+            display: block;
+        }
+
+        .hamburger-btn {
+            display: none;
+        }
+    }
+}
 
 
 

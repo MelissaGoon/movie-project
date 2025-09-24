@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-const Search = () => {
+const Search = (props) => {
     let navigate = useNavigate();
 
     const handleSubmit = (event) => {
@@ -21,7 +21,7 @@ const Search = () => {
     };
 
     return (
-        <search>
+        <search {...props}>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="movie" className="screen-reader-text">Search Movies: </label>
                 <input type="search" id="movie" name="movie" placeholder="Search Movies" />

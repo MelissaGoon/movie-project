@@ -1,13 +1,54 @@
 import { Link, NavLink } from "react-router-dom";
 import Search from "./Search";
+import { ASSETS_FOLDER_PATH } from "../globals/global-variables";
+import { useState } from "react";
+
+
 const Nav = () => {
+    const [showNavbar, setShowNavbar] = useState(false);
+    const [showSubMenu, setShowSubmenu] = useState(false);
+    const [showSearch, setShowSearch] = useState(false);
+
+    const handleShowNavbar = () => {
+        setShowNavbar(!showNavbar);
+
+        if (showSearch) {
+            setShowSearch(false);
+        }
+    };
+    const handleShowSearch = () => {
+        setShowSearch(!showSearch);
+
+        if (showNavbar) {
+            setShowNavbar(false);
+        }
+    };
+
+
     return (
         <div className="nav-container">
-            <Link to='/'>
-                <p>ghostlyDB</p>
+            <Link to='/' className="logo-link">
+                <img src={`${ASSETS_FOLDER_PATH}logo.svg`} alt="ghostlyDB logo" />
+                <span className="screen-reader-text">Navigate to ghostlyDB Home</span>
             </Link>
 
-            <nav>
+            <button className="hamburger-btn" id="menu-toggle" aria-controls="nav-menu" aria-expanded={showNavbar ? "true" : "false"}
+                aria-label="Toggles navigation menu" onClick={handleShowNavbar}>
+
+                {/* Hamburger icon */}
+                <svg style={{ display: showNavbar ? "none" : "block" }}
+                    width="36" height="28" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <path d="M2 26H33.5M2 14H33.5M2 2H33.5" stroke="#A30D0B" stroke-width="3.63" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+                {/* Close icon */}
+                <svg style={{ display: showNavbar ? "block" : "none" }}
+                    width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" id="close-icon" aria-hidden="true" focusable="false">
+                    <path d="M2 26L25.88 2M26 26L2.12 2" stroke="#A30D0B" stroke-width="3.58531" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+            </button>
+            <nav id="nav-menu" className={!showNavbar && "hidden"}>
                 <ul>
                     <li><NavLink to='/my-list'>My List</NavLink></li>
                     <li><NavLink to='/'>Explore</NavLink>
@@ -24,7 +65,17 @@ const Nav = () => {
                 </ul>
             </nav>
 
-            <Search />
+            <button onClick={handleShowSearch}
+                className="search-btn" aria-controls="search-bar" aria-expanded={showSearch ? "true" : "false"}
+                aria-label="Toggles search dropdown">
+
+                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <path d="M23.1747 23.5L32.7988 33.1241M27 14.5C27 21.4036 21.4036 27 14.5 27C7.59644 27 2 21.4036 2 14.5C2 7.59644 7.59644 2 14.5 2C21.4036 2 27 7.59644 27 14.5Z" stroke="#A30D0B" stroke-width="3.36" stroke-linecap="round" />
+                </svg>
+
+            </button>
+
+            {showSearch && <Search className="search-bar" id="search-bar" />}
 
         </div>
     )
