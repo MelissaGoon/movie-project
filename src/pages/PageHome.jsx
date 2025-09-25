@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { fetchMovies } from "../globals/global-utils";
 import HomeHeroSlider from "../components/HomeHeroSlider";
 import { MOVIE_LISTS } from "../globals/global-variables";
-import ListGallery from "../components/ListGallery";
 import LoadingPage from "../components/LoadingPage";
 import MovieTypeDisplay from "../components/MovieTypeDisplay";
 import styles from '../styles/modules/Home.module.css';

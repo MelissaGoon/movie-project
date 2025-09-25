@@ -8,9 +8,10 @@
     --navbar-gap: 2rem;
 }
 
-html {}
+html {
+    scrollbar-width: thin;
+}
 
-@media(prefers-reduced-motion) {}
 
 body {
     font-family: "Montserrat", sans-serif;
@@ -87,6 +88,7 @@ button {
     cursor: pointer;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 1rem;
     padding: 0.5rem 1rem;
     background-color: var(--red);
@@ -94,6 +96,10 @@ button {
     border: none;
     border-radius: 500px;
 
+    img {
+        height: 1rem;
+        object-fit: cover;
+    }
 
     &.border-cream {
         border: 2px solid var(--cream);

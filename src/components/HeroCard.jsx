@@ -37,7 +37,7 @@ const HeroCard = ({ data }) => {
         <article className={styles.card}>
 
             <Poster styles={styles} data={data} image_size={image_size} />
-            <div className='slide-right'>
+            <div className={styles.card_right}>
                 <MovieInfo styles={styles} data={data} details={false} />
 
                 <div className={styles.button_container}>
