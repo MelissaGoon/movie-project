@@ -1,13 +1,45 @@
 .slider_container {
     padding: 1rem;
+    padding-bottom: 3rem;
     position: relative;
+    background: linear-gradient(0deg, rgba(163, 13, 11, 0.7) 0%, rgba(163, 13, 11, 0) 45%);
+    border-radius: 0 0 30px 30px;
+    overflow: hidden;
 }
 
 
+.arrowButton {
+    transition: all 0.2s ease-in-out;
+
+    svg {
+        height: 100%;
+        width: auto;
+    }
+
+    &:hover {
+        svg path {
+            stroke: var(--red);
+        }
+    }
+
+    &:active,
+    &:focus {
+        svg path {
+            stroke: var(--red);
+        }
+    }
+
+}
+
+
+.arrowButton::before {
+    display: none;
+}
 
 .slider_bg {
     position: absolute;
     height: 100%;
+    width: 100%;
     top: 0;
     bottom: 0;
     left: 0;

@@ -8,7 +8,7 @@ import { useListContext } from '../context/ListContext';
 import { isSaved } from '../globals/global-utils';
 import { ASSETS_FOLDER_PATH } from '../globals/global-variables';
 
-const HeroCard = ({ data }) => {
+const HeroCard = ({ data, slideNum }) => {
     let navigate = useNavigate();
     const config = useConfig();
     const { list, addToList, removeFromList } = useListContext();
@@ -34,7 +34,7 @@ const HeroCard = ({ data }) => {
     }
 
     return (
-        <article className={styles.card}>
+        <article className={styles.card} id={`slide-${slideNum}`}>
 
             <Poster styles={styles} data={data} image_size={image_size} />
             <div className={styles.card_right}>

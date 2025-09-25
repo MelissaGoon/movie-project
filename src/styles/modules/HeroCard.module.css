@@ -120,40 +120,10 @@
             }
 
             h2 {
-                font-size: clamp(1.5rem, 5vw, 3rem);
+                font-size: clamp(1.5rem, 3vw, 3rem);
 
             }
         }
     }
 
 }
-
-/* .card {
-    background-color: var(--black);
-    border-radius: 10px;
-    color: var(--cream);
-    padding: 2rem;
-    margin: 1rem;
-    display: flex;
-    gap: 2rem;
-
-    .poster {
-        clip-path: inset(0 0 0 0 round clamp(10px, 10vw, 20px));
-        height: clamp(20rem, 50vw, 30rem);
-
-    }
-
- 
-    .genres {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-
-        p {
-            background-color: var(--red);
-            color: var(--cream);
-            border-radius: 500px;
-            padding: 0.2rem 0.5rem;
-        }
-    }
-} */

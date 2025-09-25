@@ -5,6 +5,36 @@ import { useConfig } from '../context/ConfigContext';
 import { useState, useEffect } from "react";
 import { ASSETS_FOLDER_PATH } from "../globals/global-variables";
 
+function PrevArrow(props) {
+    const { className, onClick } = props;
+    return (
+        <button className={`${styles.arrowButton} ${className}`} onClick={onClick}>
+
+            <svg width="32" height="53" viewBox="0 0 32 53" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <path d="M27.8928 4.33765L5.33765 26.8928L27.8928 49.4479" stroke="#FFF9ED" stroke-width="7" stroke-linecap="round" />
+
+            </svg>
+            <span className="screen-reader-only">Previous</span>
+        </button>
+    );
+}
+
+function NextArrow(props) {
+    const { className, onClick } = props;
+    return (
+        <button className={`${styles.arrowButton} ${className}`} onClick={onClick}>
+
+            <svg width="32" height="53" viewBox="0 0 32 53" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+
+                <path d="M3.55514 4L26.1103 26.5551L3.55514 49.1103" stroke="#FFF9ED" stroke-width="7" stroke-linecap="round" />
+
+            </svg>
+            <span className="screen-reader-only">Next</span>
+        </button>
+    );
+}
+
+
 const HomeHeroSlider = ({ popularArray }) => {
     const config = useConfig();
 
@@ -14,7 +44,6 @@ const HomeHeroSlider = ({ popularArray }) => {
     useEffect(() => {
         setMovies(popularArray.slice(0, 6));
     }, [popularArray]);
-
 
     const settings = {
         dots: true,
@@ -27,13 +56,16 @@ const HomeHeroSlider = ({ popularArray }) => {
         afterChange: current => {
             setActiveSlideNum(current);
         },
-        customPaging: function () {
+        customPaging: function (i) {
             return (
-                // TODO: make it look
-                <button className="dots"></button>
+                <button className="dots" aria-controls={`slide-${i}`} aria-label={`Go to slide ${i + 1}`}>
+                    <span className="screen-reader-text"> Slide {i + 1}</span>
+                </button>
             );
         },
-        dotsClass: "ghostly-dots, ghostly-thumb",
+        dotsClass: "slick-dots ghostly-dots",
+        prevArrow: <PrevArrow />,
+        nextArrow: <NextArrow />
 
     };
 
@@ -54,8 +86,8 @@ const HomeHeroSlider = ({ popularArray }) => {
 
                 <Slider {...settings}>
                     {
-                        movies.map((movie) => {
-                            return (<HeroCard key={movie.id} data={movie} />)
+                        movies.map((movie, index) => {
+                            return (<HeroCard key={movie.id} data={movie} slideNum={index + 1} />)
                         })
                     }
                 </Slider>
