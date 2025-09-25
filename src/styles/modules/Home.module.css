@@ -1,4 +1,7 @@
 .type_gallery {
     display: flex;
     flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    padding: 0 0.5rem;
 }

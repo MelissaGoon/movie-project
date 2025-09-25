@@ -109,6 +109,11 @@ button {
         color: var(--red);
         background-color: var(--cream);
     }
+
+    &.small {
+        padding: 0.25rem 0.5rem;
+        width: fit-content;
+    }
 }
 
 /*# Elements #*/
