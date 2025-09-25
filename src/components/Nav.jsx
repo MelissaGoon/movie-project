@@ -2,12 +2,15 @@ import { Link, NavLink } from "react-router-dom";
 import Search from "./Search";
 import { ASSETS_FOLDER_PATH } from "../globals/global-variables";
 import { useState } from "react";
-
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 const Nav = () => {
     const [showNavbar, setShowNavbar] = useState(false);
-    const [showSubMenu, setShowSubmenu] = useState(false);
+    const [showExplore, setShowExplore] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
+    const largerScreen = useMediaQuery(
+        "only screen and (min-width : 720px)"
+    )
 
     const handleShowNavbar = () => {
         setShowNavbar(!showNavbar);
@@ -21,6 +24,18 @@ const Nav = () => {
 
         if (showNavbar) {
             setShowNavbar(false);
+        }
+
+        if (showExplore) {
+            setShowExplore(false);
+        }
+    };
+
+    const handleShowExplore = () => {
+        setShowExplore(!showExplore);
+
+        if (showSearch) {
+            setShowSearch(false);
         }
     };
 
@@ -51,8 +66,16 @@ const Nav = () => {
             <nav id="nav-menu" className={!showNavbar && "hidden"}>
                 <ul>
                     <li><NavLink to='/my-list'>My List</NavLink></li>
-                    <li><NavLink to='/'>Explore</NavLink>
-                        <div className="explore-dropdown">
+                    <li className="explore"><NavLink to='/'>Explore</NavLink>
+                        <button className="explore-expand" id="explore-expand" aria-controls="explore-dropdown" aria-expanded={showExplore ? "true" : "false"}
+                            aria-label="Toggles navigation menu" onClick={handleShowExplore}>
+
+                            <svg width="53" height="32" viewBox="0 0 53 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 3.55514L26.5551 26.1103L49.1103 3.55514" stroke="#A30D0B" stroke-width="7" stroke-linecap="round" />
+                            </svg>
+
+                        </button>
+                        <div className={`explore-dropdown ${!showExplore && largerScreen && "hidden"}`} id="explore-dropdown">
                             <ul className="explore-links">
                                 <li><NavLink to='/#popular'>Popular</NavLink></li>
                                 <li><NavLink to='/#nowPlaying'>Now Playing</NavLink></li>

@@ -4,7 +4,8 @@
     --red: #A30D0B;
     --cream: #FFF9ED;
     --pink: #FF888C;
-    --desktop-max-w: 50rem;
+    --desktop-max-w: 70rem;
+    --navbar-gap: 2rem;
 }
 
 html {}
@@ -205,6 +206,9 @@ header {
         }
     }
 
+    .explore-expand {
+        display: none;
+    }
 
 
     a {
@@ -280,21 +284,144 @@ header {
 }
 
 
-@media (min-width:48em) {
+@media (min-width:45em) {
 
     header {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
 
-        #nav-menu,
-        #nav-menu.hidden {
-            display: block;
+
+        .nav-container {
+            justify-content: normal;
+            margin: 0 auto;
+            max-width: var(--desktop-max-w);
         }
+
+        .explore {
+            display: flex;
+            align-items: center;
+            gap: .625rem;
+        }
+
+        /* Links and buttons */
+
+        .explore-expand {
+            display: block;
+            padding: 0;
+            background: none;
+            width: 1rem;
+
+            svg {
+                width: 100%;
+                height: auto;
+
+            }
+
+            &:active,
+            &:focus {
+                svg path {
+                    stroke: var(--black);
+                }
+            }
+        }
+
+        .search-btn {
+            order: initial;
+            margin-left: var(--navbar-gap);
+        }
+
+        .search-btn,
+        .explore-expand {
+            svg {
+                transition: all 0.3s ease-in-out;
+                transform: scale(1);
+            }
+
+            &:hover {
+                svg {
+                    transform: scale(1.2);
+                }
+            }
+
+        }
+
 
         .hamburger-btn {
             display: none;
         }
+
+
+        /* Nav menu and Search */
+        #nav-menu,
+        #nav-menu.hidden {
+            position: static;
+            height: auto;
+            z-index: 1000;
+            padding: 0;
+            flex-grow: 8;
+
+            ul {
+                display: flex;
+                margin: 0;
+
+                gap: var(--navbar-gap);
+                justify-content: right;
+                font-size: 1.25rem;
+            }
+
+
+            .explore-dropdown {
+                position: absolute;
+                height: auto;
+                top: 90px;
+                background-color: var(--cream);
+                padding: 1rem;
+                border-radius: 20px;
+                transition: all 0.1s ease-out;
+            }
+
+            .explore-dropdown.hidden {
+                height: 0;
+                padding: 0;
+                opacity: 0;
+            }
+
+
+
+            .explore-links {
+                flex-direction: column;
+                text-align: right;
+                gap: 0.2rem;
+            }
+        }
+
+
+        .search-bar {
+            position: absolute;
+            top: 90px;
+            left: initial;
+            right: 0;
+            width: fit-content;
+            opacity: 1;
+            transform: translateY(0);
+            animation: fade-in 0.1s ease-out;
+
+            form input {
+                width: 12.5rem;
+            }
+        }
+
+
     }
 }
 
+@keyframes fade-in {
+    0% {
+        /* Effect values */
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
 
 
 
