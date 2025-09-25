@@ -4,6 +4,8 @@ import HomeHeroSlider from "../components/HomeHeroSlider";
 import { MOVIE_LISTS } from "../globals/global-variables";
 import ListGallery from "../components/ListGallery";
 import LoadingPage from "../components/LoadingPage";
+import MovieTypeDisplay from "../components/MovieTypeDisplay";
+import styles from '../styles/modules/Home.module.css';
 
 const PageHome = () => {
     const [loading, setLoading] = useState(true);
@@ -12,6 +14,7 @@ const PageHome = () => {
     const [nowPlaying, setNowPlaying] = useState([]);
     const [upcoming, setUpcoming] = useState([]);
     const [topRated, setTopRated] = useState([]);
+    const [current, setCurrent] = useState("popular");
 
     useEffect(() => {
 
@@ -58,11 +61,37 @@ const PageHome = () => {
             <h1 className="screen-reader-text">ghostlyDB</h1>
             <HomeHeroSlider popularArray={popular} />
 
-            <ListGallery movieArray={upcoming} title="Upcoming" id="upcoming" />
-            <ListGallery movieArray={popular} title="Popular" id="popular" />
-            <ListGallery movieArray={nowPlaying} title="Now Playing" id="nowPlaying" />
-            <ListGallery movieArray={topRated} title="Top Rated" id="topRated" />
 
+            <div className={styles.tabs}>
+                <input type="radio" id="popular" value="popular" name="tabs" defaultChecked onChange={(e) => setCurrent(e.target.value)} />
+                <label className={styles.tab} htmlFor="popular">Popular</label>
+
+                <input type="radio" id="upcoming" value="upcoming" name="tabs" onChange={(e) => setCurrent(e.target.value)} />
+                <label className={styles.tab} htmlFor="upcoming">Upcoming</label>
+
+                <input type="radio" id="nowPlaying" value="nowPlaying" name="tabs" onChange={(e) => setCurrent(e.target.value)} />
+                <label className={styles.tab} htmlFor="nowPlaying">Now Playing</label>
+
+                <input type="radio" id="topRated" value="topRated" name="tabs" onChange={(e) => setCurrent(e.target.value)} />
+                <label className={styles.tab} htmlFor="topRated">Top Rated</label>
+                <span className={styles.glider}></span>
+            </div>
+
+            {current === "upcoming" && (
+                <MovieTypeDisplay movieArray={upcoming} title="Upcoming" styles={styles} />
+            )}
+
+            {current === "popular" && (
+                <MovieTypeDisplay movieArray={popular} title="Popular" styles={styles} />
+            )}
+
+            {current === "nowPlaying" && (
+                <MovieTypeDisplay movieArray={nowPlaying} title="Now Playing" styles={styles} />
+            )}
+
+            {current === "topRated" && (
+                <MovieTypeDisplay movieArray={topRated} title="Top Rated" styles={styles} />
+            )}
 
         </main>
     );

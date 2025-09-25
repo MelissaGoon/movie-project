@@ -1,0 +1,4 @@
+.type_gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
