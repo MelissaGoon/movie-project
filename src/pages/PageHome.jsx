@@ -6,6 +6,7 @@ import ListGallery from "../components/ListGallery";
 import LoadingPage from "../components/LoadingPage";
 import MovieTypeDisplay from "../components/MovieTypeDisplay";
 import styles from '../styles/modules/Home.module.css';
+import { useSearchParams } from "react-router-dom";
 
 const PageHome = () => {
     const [loading, setLoading] = useState(true);
@@ -14,7 +15,13 @@ const PageHome = () => {
     const [nowPlaying, setNowPlaying] = useState([]);
     const [upcoming, setUpcoming] = useState([]);
     const [topRated, setTopRated] = useState([]);
-    const [current, setCurrent] = useState("popular");
+
+
+    const [searchParams, setSearchParams] = useSearchParams();
+    const newType = searchParams.get("type");
+
+    const type = Object.keys(MOVIE_LISTS).includes(newType) ? newType : "popular";
+
 
     useEffect(() => {
 
@@ -63,33 +70,33 @@ const PageHome = () => {
 
 
             <div className={styles.tabs}>
-                <input type="radio" id="popular" value="popular" name="tabs" defaultChecked onChange={(e) => setCurrent(e.target.value)} />
+                <input type="radio" id="popular" value="popular" name="tabs" checked={type === "popular"} onChange={(e) => setSearchParams({ type: e.target.value })} />
                 <label className={styles.tab} htmlFor="popular">Popular</label>
 
-                <input type="radio" id="upcoming" value="upcoming" name="tabs" onChange={(e) => setCurrent(e.target.value)} />
+                <input type="radio" id="upcoming" value="upcoming" name="tabs" checked={type === "upcoming"} onChange={(e) => setSearchParams({ type: e.target.value })} />
                 <label className={styles.tab} htmlFor="upcoming">Upcoming</label>
 
-                <input type="radio" id="nowPlaying" value="nowPlaying" name="tabs" onChange={(e) => setCurrent(e.target.value)} />
+                <input type="radio" id="nowPlaying" value="nowPlaying" name="tabs" checked={type === "nowPlaying"} onChange={(e) => setSearchParams({ type: e.target.value })} />
                 <label className={styles.tab} htmlFor="nowPlaying">Now Playing</label>
 
-                <input type="radio" id="topRated" value="topRated" name="tabs" onChange={(e) => setCurrent(e.target.value)} />
+                <input type="radio" id="topRated" value="topRated" name="tabs" checked={type === "topRated"} onChange={(e) => setSearchParams({ type: e.target.value })} />
                 <label className={styles.tab} htmlFor="topRated">Top Rated</label>
                 <span className={styles.glider}></span>
             </div>
 
-            {current === "upcoming" && (
+            {type === "upcoming" && (
                 <MovieTypeDisplay movieArray={upcoming} title="Upcoming" styles={styles} />
             )}
 
-            {current === "popular" && (
+            {type === "popular" && (
                 <MovieTypeDisplay movieArray={popular} title="Popular" styles={styles} />
             )}
 
-            {current === "nowPlaying" && (
+            {type === "nowPlaying" && (
                 <MovieTypeDisplay movieArray={nowPlaying} title="Now Playing" styles={styles} />
             )}
 
-            {current === "topRated" && (
+            {type === "topRated" && (
                 <MovieTypeDisplay movieArray={topRated} title="Top Rated" styles={styles} />
             )}
 

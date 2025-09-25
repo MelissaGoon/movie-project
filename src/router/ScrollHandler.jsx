@@ -6,6 +6,7 @@ export default function ScrollHandler() {
 
     useEffect(() => {
         if (hash) {
+            // Didn't end up using this but left here for my future reference
             // Scroll to hash if present
             const el = document.querySelector(hash);
             if (el) {
