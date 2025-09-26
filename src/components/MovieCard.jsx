@@ -60,7 +60,7 @@ const MovieCard = ({ data }) => {
 
                 <p className={styles.overview}>{data.overview}</p>
 
-                <Button classes="small" onClick={handleSeeMore} text="See More" />
+                <Button className={styles.btn} classes="small" onClick={handleSeeMore} text="See More" />
 
             </section>
         </article>

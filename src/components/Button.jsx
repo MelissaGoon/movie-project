@@ -8,16 +8,16 @@
  * small: changes the button to a small button
 */
 
-const Button = ({ classes, text, icon, onClick }) => {
+const Button = ({ classes, className, text, icon, onClick }) => {
 
     if (icon) {
         return (
-            <button className={classes} onClick={onClick}>
+            <button className={`${classes} ${className}`} onClick={onClick}>
                 <img src={icon} alt="" />
                 <span> {text}</span> </button>
         )
     } else {
-        return (<button className={classes} onClick={onClick}>
+        return (<button className={`${classes} ${className}`} onClick={onClick}>
             <span> {text}</span> </button>)
     }
 }

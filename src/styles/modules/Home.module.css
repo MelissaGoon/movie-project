@@ -1,5 +1,6 @@
 .type_gallery {
     display: flex;
+    max-width: var(--desktop-max-w);
     flex-wrap: wrap;
     gap: 0.5rem;
     justify-content: center;

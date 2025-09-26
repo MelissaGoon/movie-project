@@ -8,6 +8,7 @@
     color: var(--black);
     display: flex;
     flex-direction: column;
+    border: 1px solid var(--cream);
 
     .overview {
         display: none;
@@ -86,12 +87,69 @@
 }
 
 @media (min-width:45em) {
-    .overview {
-        text-overflow: ellipsis;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 5;
-        line-clamp: 5;
-        -webkit-box-orient: vertical;
+    .card {
+        width: 11rem;
+        height: 21.5rem;
+
+
+        .poster {
+            width: 100%;
+            height: 16.5rem;
+            object-fit: cover;
+            object-position: top;
+            transition: all 0.3s ease-out;
+        }
+
+        .body_content {
+            height: auto;
+            padding-top: 0.2rem;
+            gap: 0.1rem;
+
+            p {
+                font-size: 1rem;
+            }
+
+            h3 {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
+
+            .btn {
+                display: none;
+            }
+
+            .overview {
+                transition: all 0.3s ease-out;
+                opacity: 0;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 9;
+                line-clamp: 9;
+                -webkit-box-orient: vertical;
+            }
+        }
+
+        &:hover {
+            .poster {
+                height: 2rem;
+            }
+
+            .body_content {
+                gap: 0.5rem;
+
+                .btn {
+                    display: block;
+                }
+            }
+
+            .overview {
+                opacity: 1;
+            }
+        }
     }
 }
