@@ -42,7 +42,7 @@ const HeroCard = ({ data, slideNum }) => {
 
                 <div className={styles.button_container}>
                     {saved ? <Button text="Remove from List" onClick={() => handleSaveClick(data)} icon={`${ASSETS_FOLDER_PATH}saved-cream.svg`} /> :
-                        <Button classes="body-cream" text="Add to List" onClick={() => handleSaveClick(data)} icon={`${ASSETS_FOLDER_PATH}not-saved.svg`} />}
+                        <Button classes="body-cream border-red" text="Add to List" onClick={() => handleSaveClick(data)} icon={`${ASSETS_FOLDER_PATH}not-saved.svg`} />}
                     <Button text="See More" classes="border-cream" onClick={handleBtnClick} />
                 </div>
             </div>

@@ -12,12 +12,12 @@ const Button = ({ classes, className, text, icon, onClick }) => {
 
     if (icon) {
         return (
-            <button className={`${classes} ${className}`} onClick={onClick}>
+            <button className={`btn ${classes ? classes : ''} ${className ? className : ''}`} onClick={onClick}>
                 <img src={icon} alt="" />
                 <span> {text}</span> </button>
         )
     } else {
-        return (<button className={`${classes} ${className}`} onClick={onClick}>
+        return (<button className={`btn ${classes ? classes : ''} ${className ? className : ''}`} onClick={onClick}>
             <span> {text}</span> </button>)
     }
 }

@@ -64,12 +64,29 @@
         padding: 0;
         margin: 0.5rem;
 
-        img {
+        svg {
+            position: relative;
             height: 1.5rem;
             width: auto;
-            z-index: 2;
+            z-index: 3;
+            transition: all 0.3s ease-in-out;
         }
 
+        &:hover {
+            box-shadow: none;
+
+            svg {
+                transform: scale(1.2);
+            }
+        }
+
+        &:active,
+        &:focus {
+            svg {
+
+                filter: drop-shadow(0px 5px 8px #000000);
+            }
+        }
 
     }
 
@@ -119,7 +136,12 @@
             }
 
             .btn {
-                display: none;
+                opacity: 0;
+            }
+
+            .btn:active,
+            .btn:focus {
+                opacity: 1;
             }
 
             .overview {
@@ -143,7 +165,7 @@
                 gap: 0.5rem;
 
                 .btn {
-                    display: block;
+                    opacity: 1;
                 }
             }
 
