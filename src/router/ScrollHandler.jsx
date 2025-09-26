@@ -2,19 +2,21 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function ScrollHandler() {
-    const { pathname, hash } = useLocation();
+    const { pathname, search } = useLocation();
 
     useEffect(() => {
-        if (hash) {
-            // Didn't end up using this but left here for my future reference
-            // Scroll to hash if present
-            const el = document.querySelector(hash);
+        const params = new URLSearchParams(search);
+        const type = params.get("type");
+
+        if (type) {
+            // Scroll to the type section
+            const el = document.getElementById("type-selection");
             if (el) {
                 el.scrollIntoView({ behavior: "smooth" });
             } else {
-                // If not, wait for it to load in
+                // If not rendered yet, retry after a short delay
                 const timeout = setTimeout(() => {
-                    const elLater = document.querySelector(hash);
+                    const elLater = document.getElementById("type-selection");
                     if (elLater) {
                         elLater.scrollIntoView({ behavior: "smooth" });
                     }
@@ -22,10 +24,10 @@ export default function ScrollHandler() {
                 return () => clearTimeout(timeout);
             }
         } else {
-            // Else scroll to top of page
+            // Scroll to top
             window.scrollTo({ top: 0, left: 0, behavior: "auto" });
         }
-    }, [pathname, hash]);
+    }, [pathname, search]);
 
     return null;
 }

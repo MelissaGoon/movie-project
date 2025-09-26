@@ -53,8 +53,10 @@
         flex-wrap: wrap;
         gap: 0.5rem;
 
+
         p {
             margin: 0;
+            box-shadow: 0px 0px 10px 1px var(--red);
             background-color: var(--red);
             color: var(--cream);
             border-radius: 500px;
@@ -95,7 +97,7 @@
 
 @media (min-width: 45em) {
     .card {
-        max-width: var(--desktop-max-w);
+        max-width: 65rem;
 
         .poster {
             width: 50%;

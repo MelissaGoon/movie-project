@@ -68,7 +68,7 @@ const PageHome = () => {
             <HomeHeroSlider popularArray={popular} />
 
 
-            <div className={styles.tabs}>
+            <div className={styles.tabs} id="type-selection">
                 <input type="radio" id="popular" value="popular" name="tabs" checked={type === "popular"} onChange={(e) => setSearchParams({ type: e.target.value })} />
                 <label className={styles.tab} htmlFor="popular">Popular</label>
 

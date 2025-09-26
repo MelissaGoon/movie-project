@@ -2,7 +2,7 @@ import { BASE_URL_MOVIES, BASE_URL_SEARCH_MOVIES } from "./global-variables";
 const API_KEY = import.meta.env.VITE_API_KEY;
 
 
-// Fetch list of movies by section
+// Fetch list of 18 movies by section
 export const fetchMovies = async (section) => {
     try {
         const response = await fetch(`${BASE_URL_MOVIES}/${section}?api_key=${API_KEY}&language=en-US&page=1`);
@@ -11,7 +11,7 @@ export const fetchMovies = async (section) => {
         }
 
         const data = await response.json();
-        return data.results || [];
+        return data.results.slice(0, 18) || [];
     } catch (e) {
         console.error(e.message);
         return [];

@@ -48,8 +48,8 @@ const HomeHeroSlider = ({ popularArray }) => {
     const settings = {
         dots: true,
         infinite: true,
-        // autoplay: true,
-        // autoplaySpeed: 7000,
+        autoplay: true,
+        autoplaySpeed: 7000,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,

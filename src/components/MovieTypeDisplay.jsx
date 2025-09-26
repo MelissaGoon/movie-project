@@ -2,7 +2,7 @@ import MovieCard from "./MovieCard";
 
 const MovieTypeDisplay = ({ movieArray, title, styles }) => {
     return (
-        <section >
+        <section className={styles.type_section} >
             <h2>{title}</h2>
             <div className={styles.type_gallery}>
                 {movieArray.map((movie) => <MovieCard data={movie} />)}

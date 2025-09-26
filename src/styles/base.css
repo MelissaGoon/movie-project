@@ -4,7 +4,7 @@
     --red: #A30D0B;
     --cream: #FFF9ED;
     --pink: #FF888C;
-    --desktop-max-w: 70rem;
+    --desktop-max-w: 75rem;
     --navbar-gap: 2rem;
 }
 
@@ -270,6 +270,7 @@ header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
     }
 
     /* Links and buttons */
@@ -291,7 +292,7 @@ header {
     .search-btn {
         background: none;
         height: 1.5rem;
-        width: 1.5rem;
+        width: auto;
         padding: 0;
 
         svg {

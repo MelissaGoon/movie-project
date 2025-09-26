@@ -37,6 +37,7 @@
         .rating {
             display: flex;
             gap: 0.5rem;
+            align-items: center;
 
             img {
                 height: 1rem;
@@ -101,6 +102,12 @@
         background: radial-gradient(circle, rgba(255, 249, 237, 1) 30%, rgba(255, 249, 237, 0) 70%);
 
     }
+}
+
+.card.saved {
+    background-color: var(--red);
+    color: var(--cream);
+    border-color: var(--red);
 }
 
 @media (min-width:45em) {

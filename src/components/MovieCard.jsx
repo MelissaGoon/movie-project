@@ -61,11 +61,11 @@ const MovieCard = ({ data }) => {
             <section className={styles.body_content}>
                 <h3>{data.title}</h3>
                 <p>{data.release_date}</p>
-                <Rating vote_average={data.vote_average} vote_count={data.vote_count} styles={styles} />
+                <Rating vote_average={data.vote_average} vote_count={data.vote_count} styles={styles} saved={saved} />
 
                 <p className={styles.overview}>{data.overview}</p>
 
-                <Button className={styles.btn} classes="small" onClick={handleSeeMore} text="See More" />
+                <Button className={styles.btn} classes={"small" + (saved ? " body-cream" : "")} onClick={handleSeeMore} text="See More" />
 
             </section>
         </article>
