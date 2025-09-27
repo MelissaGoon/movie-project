@@ -4,8 +4,6 @@ import { PrevArrow, NextArrow } from "./Arrows";
 
 const SimilarGallery = ({ movieArray }) => {
 
-    // TODO: implement responsive
-    //  https://react-slick.neostack.com/docs/example/responsive
     var settings = {
         dots: false,
         infinite: false,

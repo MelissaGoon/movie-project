@@ -23,14 +23,6 @@
 
     }
 
-    .fade_in {
-        opacity: 0;
-        transition: opacity 0.2s ease;
-    }
-
-    .fade_in.loaded {
-        opacity: 1;
-    }
 
     p {
         font-style: italic;
@@ -55,13 +47,13 @@
     .main_info,
     .overview,
     .cast {
-        padding: var(--mobile-y-margin) 0;
-        padding-top: 0;
-        margin: 0 var(--mobile-margin-s);
         border-bottom: 1px solid var(--red);
     }
 
-    .recs {
+    .recs,
+    .main_info,
+    .overview,
+    .cast {
         padding: var(--mobile-y-margin) 0;
         padding-top: 0;
         margin: 0 var(--mobile-margin-s);
@@ -107,10 +99,27 @@
             }
         }
     }
+}
 
+@media (min-width: 34em) {
 
+    .hero {
+        padding: var(--mobile-margin-m);
+    }
 
+    .movie_contents {
 
+        .poster {
+            margin: var(--mobile-margin-m);
+        }
+
+        .recs,
+        .main_info,
+        .overview,
+        .cast {
+            margin: 0 var(--mobile-margin-m);
+        }
+    }
 }
 
 @media (min-width: 45em) {

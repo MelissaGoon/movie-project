@@ -1,6 +1,18 @@
-.result_gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.search_body {
+    padding-top: 4.5rem;
     max-width: var(--desktop-max-w);
+    margin: 0 auto;
+
+    h1 {
+        padding: var(--mobile-margin-s);
+    }
+}
+
+@media (min-width: 34em) {
+
+    .search_body {
+        h1 {
+            padding: var(--mobile-margin-m);
+        }
+    }
 }

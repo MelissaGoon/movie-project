@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import MovieCard from "../components/MovieCard";
 import { fetchSearchMovies } from "../globals/global-utils";
 import styles from '../styles/modules/SearchResults.module.css';
+import stylesGallery from '../styles/modules/ListPage.module.css';
 import { Link } from "react-router-dom";
 import ErrorPage from "../components/ErrorPage";
 import LoadingPage from "../components/LoadingPage";
@@ -43,10 +44,12 @@ const PageSearchResults = () => {
 
     console.log(results);
     return (
-        <main id="site-main">
-            <h1>Search results for: <span className="capitalize">{query}</span></h1>
+        <main id="site-main" >
+            <div className={styles.search_body}>
+                <h1>Search results for: <span className="capitalize">{query}</span></h1>
 
-            <div className={styles.result_gallery}> {results.map(item => <MovieCard key={item.id} data={item} />)}</div>
+                <div className={stylesGallery.movie_gallery}> {results.map(item => <MovieCard key={item.id} data={item} />)}</div>
+            </div>
         </main >
     )
 }

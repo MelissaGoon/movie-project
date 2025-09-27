@@ -66,7 +66,7 @@ const PageSingleMovie = () => {
                     {!bgLoaded && <img src={`${ASSETS_FOLDER_PATH}placeholder-background.svg`} alt="A placeholder backdrop" />}
 
                     <img src={movieDetails.backdrop_path ? `${image_base_url}${backdrop_size}${movieDetails.backdrop_path}` : `${ASSETS_FOLDER_PATH}placeholder-background.svg`}
-                        alt={`Backdrop for ${movieDetails.title}`} onLoad={handleBgLoad} className={`${styles.fade_in} ${bgLoaded ? styles.loaded : ""}`} />
+                        alt={`Backdrop for ${movieDetails.title}`} onLoad={handleBgLoad} className={`fade_in ${bgLoaded ? "loaded" : ""}`} />
                     <div className={styles.hero_text}>
                         <h1>{movieDetails.title}</h1>
                         <p>{movieDetails.tagline}</p>

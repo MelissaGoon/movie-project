@@ -9,8 +9,6 @@ const CastGallery = ({ data }) => {
     const config = useConfig();
     const castArray = data.credits.cast;
 
-    // TODO: implement responsive
-    //  https://react-slick.neostack.com/docs/example/responsive
     var settings = {
         dots: false,
         infinite: false,

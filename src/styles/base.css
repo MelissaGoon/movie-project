@@ -157,7 +157,22 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
     height: 100vh;
+
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 45em) {
+
+    .error-page,
+    .loading-page {
+        h1 {
+            font-size: 3.5rem;
+        }
+    }
 }
 
 /* Created by Temani Afif via https://css-loaders.com/spinner/  */
@@ -633,7 +648,15 @@ main {
     min-height: 100vh;
 }
 
+/* Hero Image utils */
+.fade_in {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
 
+.fade_in.loaded {
+    opacity: 1;
+}
 
 
 /*# Footer #*/
