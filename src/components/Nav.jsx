@@ -13,10 +13,12 @@ const Nav = () => {
     );
 
     const exploreRef = useRef(null);
+    const expandBtnRef = useRef(null)
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (exploreRef.current && !exploreRef.current.contains(event.target)) {
+            if (exploreRef.current && !exploreRef.current.contains(event.target) &&
+                expandBtnRef.current && !expandBtnRef.current.contains(event.target)) {
                 setShowExplore(false);
             }
         };
@@ -28,6 +30,7 @@ const Nav = () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [showExplore]);
+
 
     const handleShowNavbar = () => {
         setShowNavbar(!showNavbar);
@@ -86,7 +89,7 @@ const Nav = () => {
                     <li><NavLink to='/my-list'>My List</NavLink></li>
                     <li className="explore"><NavLink to='/'>Explore</NavLink>
                         <button className="explore-expand" id="explore-expand" aria-controls="explore-dropdown" aria-expanded={showExplore ? "true" : "false"}
-                            aria-label="Toggles navigation menu" onClick={handleShowExplore}>
+                            aria-label="Toggles navigation menu" onClick={handleShowExplore} ref={expandBtnRef}>
 
                             <svg width="53" height="32" viewBox="0 0 53 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4 3.55514L26.5551 26.1103L49.1103 3.55514" stroke="#A30D0B" strokeWidth="7" strokeLinecap="round" />

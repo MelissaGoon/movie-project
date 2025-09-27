@@ -457,6 +457,7 @@ header {
         padding-top: 4rem;
         z-index: -1;
         font-size: 2rem;
+        width: 50vw;
         transition: right 0.5s ease-out;
 
         ul {
@@ -702,6 +703,12 @@ footer {
 
 @media (min-width:45em) {
     footer {
+        margin-top: 3rem;
+
+        li {
+            margin: 1rem 0;
+        }
+
         .footer-top {
             max-width: var(--desktop-max-w);
             margin: 0 auto;

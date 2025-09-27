@@ -1,3 +1,5 @@
+// Custom arrows for slider
+
 function PrevArrow(props) {
     const { className, onClick, additionalClass } = props;
     return (
