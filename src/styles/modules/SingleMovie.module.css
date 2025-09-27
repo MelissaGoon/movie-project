@@ -61,6 +61,12 @@
         border-bottom: 1px solid var(--red);
     }
 
+    .recs {
+        padding: var(--mobile-y-margin) 0;
+        padding-top: 0;
+        margin: 0 var(--mobile-margin-s);
+    }
+
     .card_text {
 
 
@@ -145,6 +151,9 @@
             max-width: var(--desktop-max-w);
         }
 
+        .recs {
+            padding: 1rem;
+        }
 
         .main_info {
             display: flex;

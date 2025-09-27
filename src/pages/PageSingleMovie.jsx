@@ -99,7 +99,7 @@ const PageSingleMovie = () => {
                     {movieDetails.recommendations.results.length > 0 &&
                         <section className={styles.recs}>
                             <h2>Viewers Also Watched</h2>
-                            <SimilarGallery movieArray={movieDetails.recommendations.results.slice(0, 8)} />
+                            <SimilarGallery movieArray={movieDetails.recommendations.results.slice(0, 12)} />
                         </section>}
 
 

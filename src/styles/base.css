@@ -209,7 +209,8 @@ button {
 }
 
 .arrowButtonHero.slick-prev,
-.arrowBtnCast.slick-prev {
+.arrowBtnCast.slick-prev,
+.arrowBtnSimilar.slick-prev {
     left: -10px;
 }
 
@@ -218,6 +219,35 @@ button {
     right: -10px;
 }
 
+.arrowBtnSimilar.slick-next {
+    right: 3px;
+}
+
+.arrowBtnSimilar.slick-prev {
+    left: 3px;
+}
+
+
+.arrowBtnSimilar.arrowButton.slick-next,
+.arrowBtnSimilar.arrowButton.slick-prev {
+
+    background: radial-gradient(circle, rgba(255, 249, 237, 0.8) 0%, rgba(255, 249, 237, 0) 86%);
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.2rem;
+
+    svg path {
+        stroke: var(--black);
+    }
+
+    &:active,
+    &:focus {
+        svg path {
+            stroke: var(--red);
+        }
+    }
+
+}
 
 .arrowButton.slick-disabled {
     display: none;
@@ -226,14 +256,17 @@ button {
 .arrowButton {
     transition: all 0.2s ease-in-out;
 
+
     svg {
+        transition: all 0.2s ease-in-out;
         height: 100%;
         width: auto;
+        transform: scale(1);
     }
 
     &:hover {
-        svg path {
-            stroke: var(--red);
+        svg {
+            transform: scale(1.1);
         }
     }
 
@@ -268,6 +301,27 @@ button {
         right: 0;
         top: 55%;
     }
+
+    .arrowBtnSimilar.slick-next {
+        right: -10px;
+    }
+
+    .arrowBtnSimilar.slick-prev {
+        left: -10px;
+    }
+
+
+    .arrowBtnSimilar.arrowButton.slick-next,
+    .arrowBtnSimilar.arrowButton.slick-prev {
+
+        background: none;
+        padding: 0;
+
+        svg path {
+            stroke: var(--cream);
+        }
+
+    }
 }
 
 @media (min-width: 68em) {
@@ -281,10 +335,16 @@ button {
         right: 30px;
         top: 55%;
     }
+
+    .arrowBtnSimilar.slick-next {
+        right: -20px;
+    }
+
+    .arrowBtnSimilar.slick-prev {
+        left: -20px;
+    }
+
 }
-
-/* Forms */
-
 
 
 /*## Components ##*/
