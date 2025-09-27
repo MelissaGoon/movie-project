@@ -8,33 +8,7 @@
 }
 
 
-.arrowButton {
-    transition: all 0.2s ease-in-out;
 
-    svg {
-        height: 100%;
-        width: auto;
-    }
-
-    &:hover {
-        svg path {
-            stroke: var(--red);
-        }
-    }
-
-    &:active,
-    &:focus {
-        svg path {
-            stroke: var(--red);
-        }
-    }
-
-}
-
-
-.arrowButton::before {
-    display: none;
-}
 
 .slider_bg {
     position: absolute;

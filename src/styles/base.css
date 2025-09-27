@@ -6,6 +6,9 @@
     --pink: #FF888C;
     --desktop-max-w: 75rem;
     --navbar-gap: 2rem;
+    --mobile-margin-s: 0.5rem;
+    --mobile-margin-m: 1.5rem;
+    --mobile-y-margin: 1.25rem;
 }
 
 html {
@@ -29,15 +32,10 @@ h6 {
     font-weight: 700;
 }
 
-p {}
-
 .capitalize {
     text-transform: capitalize;
 }
 
-@media (min-width:48em) {
-    p {}
-}
 
 /*# Links #*/
 a {
@@ -203,48 +201,83 @@ button {
 
 
 
-.slick-arrow.slick-prev,
-.slick-arrow.slick-next {
+.arrowButton.slick-prev,
+.arrowButton.slick-next {
     z-index: 10;
     width: 1rem;
     height: 1rem;
 }
 
-.slick-arrow.slick-prev {
+.arrowButtonHero.slick-prev,
+.arrowBtnCast.slick-prev {
     left: -10px;
 }
 
-.slick-arrow.slick-next {
+.arrowButtonHero.slick-next,
+.arrowBtnCast.slick-next {
     right: -10px;
 }
 
-@media (min-width: 45rem) {
 
-    .slick-arrow.slick-prev,
-    .slick-arrow.slick-next {
+.arrowButton.slick-disabled {
+    display: none;
+}
+
+.arrowButton {
+    transition: all 0.2s ease-in-out;
+
+    svg {
+        height: 100%;
+        width: auto;
+    }
+
+    &:hover {
+        svg path {
+            stroke: var(--red);
+        }
+    }
+
+    &:active,
+    &:focus {
+        svg path {
+            stroke: var(--red);
+        }
+    }
+
+}
+
+
+.arrowButton::before {
+    display: none;
+}
+
+@media (min-width: 45em) {
+
+    .arrowButton.slick-prev,
+    .arrowButton.slick-next {
         width: 1.5rem;
         height: 1.5rem;
     }
 
-    .slick-arrow.slick-prev {
+    .arrowButtonHero.slick-prev {
         left: 0;
         top: 55%;
     }
 
-    .slick-arrow.slick-next {
+    .arrowButtonHero.slick-next {
         right: 0;
         top: 55%;
     }
 }
 
-@media (min-width: 68rem) {
+@media (min-width: 68em) {
 
-    .slick-arrow.slick-prev {
+    .arrowButtonHero.slick-prev {
         left: 30px;
         top: 55%;
     }
 
-    .slick-arrow.slick-next {
+    .arrowButtonHero.slick-next {
         right: 30px;
         top: 55%;
     }
@@ -535,28 +568,17 @@ header {
 
 
 
-@media (min-width:48em) {
-    header {}
-
-
-    nav {}
-
-
-}
-
-
 /*# Main #*/
-main {}
-
-@media (min-width:48em) {
-    main {}
+main {
+    min-height: 100vh;
 }
+
 
 
 
 /*# Footer #*/
 footer {}
 
-@media (min-width:48em) {
+@media (min-width:45em) {
     footer {}
 }

@@ -4,35 +4,7 @@ import styles from '../styles/modules/HeroSlider.module.css';
 import { useConfig } from '../context/ConfigContext';
 import { useState, useEffect } from "react";
 import { ASSETS_FOLDER_PATH } from "../globals/global-variables";
-
-function PrevArrow(props) {
-    const { className, onClick } = props;
-    return (
-        <button className={`${styles.arrowButton} ${className}`} onClick={onClick}>
-
-            <svg width="32" height="53" viewBox="0 0 32 53" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                <path d="M27.8928 4.33765L5.33765 26.8928L27.8928 49.4479" stroke="#FFF9ED" stroke-width="7" stroke-linecap="round" />
-
-            </svg>
-            <span className="screen-reader-only">Previous</span>
-        </button>
-    );
-}
-
-function NextArrow(props) {
-    const { className, onClick } = props;
-    return (
-        <button className={`${styles.arrowButton} ${className}`} onClick={onClick}>
-
-            <svg width="32" height="53" viewBox="0 0 32 53" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-
-                <path d="M3.55514 4L26.1103 26.5551L3.55514 49.1103" stroke="#FFF9ED" stroke-width="7" stroke-linecap="round" />
-
-            </svg>
-            <span className="screen-reader-only">Next</span>
-        </button>
-    );
-}
+import { PrevArrow, NextArrow } from "./Arrows";
 
 
 const HomeHeroSlider = ({ popularArray }) => {
@@ -64,8 +36,8 @@ const HomeHeroSlider = ({ popularArray }) => {
             );
         },
         dotsClass: "slick-dots ghostly-dots",
-        prevArrow: <PrevArrow />,
-        nextArrow: <NextArrow />
+        prevArrow: <PrevArrow additionalClass="arrowButtonHero" />,
+        nextArrow: <NextArrow additionalClass="arrowButtonHero" />
 
     };
 

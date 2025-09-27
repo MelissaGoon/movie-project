@@ -82,7 +82,7 @@
 
 }
 
-@media (min-width: 34rem) {
+@media (min-width: 34em) {
     .card {
         display: flex;
         align-items: center;

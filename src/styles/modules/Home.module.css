@@ -1,9 +1,9 @@
 .type_section {
-    margin: 0.5rem;
+    margin: var(--mobile-margin-s);
 
     h2 {
         margin: 2rem;
-        margin-top: 1.25rem;
+        margin-top: var(--mobile-y-margin);
         font-size: 1.5rem;
         text-align: center;
         text-decoration: underline;
@@ -27,7 +27,7 @@
     background-color: var(--cream);
     color: var(--black);
     padding: 0.5rem 0.25rem;
-    margin: 1.25rem 0.5rem;
+    margin: var(--mobile-y-margin) var(--mobile-margin-s);
     text-align: center;
     border-radius: 500px;
     font-size: clamp(14px, 2vw, 1.1rem);
@@ -70,11 +70,11 @@
 @media (min-width: 34em) {
 
     .type_section {
-        margin: 1.5rem;
+        margin: var(--mobile-margin-m);
     }
 
     .tabs {
-        margin: 1.5rem;
+        margin: var(--mobile-margin-m);
     }
 
 }

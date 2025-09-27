@@ -1,0 +1,212 @@
+.hero {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0 0 20px 20px;
+    padding: var(--mobile-margin-s);
+    margin-bottom: var(--mobile-y-margin);
+    background: linear-gradient(0deg, rgba(163, 13, 11, 0.7) 0%, rgba(163, 13, 11, 0) 45%);
+
+    img {
+        position: absolute;
+        height: 100%;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: -1;
+        object-fit: cover;
+        object-position: center;
+        filter: brightness(0.5);
+
+    }
+
+    .fade_in {
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .fade_in.loaded {
+        opacity: 1;
+    }
+
+    p {
+        font-style: italic;
+        margin-top: 0;
+    }
+
+}
+
+.movie_contents {
+
+    .poster {
+        width: 40vw;
+        max-height: 15rem;
+        object-fit: contain;
+        object-position: center;
+        display: block;
+        margin: var(--mobile-margin-s);
+        float: left;
+
+    }
+
+    .main_info,
+    .overview,
+    .cast {
+        padding: var(--mobile-y-margin) 0;
+        padding-top: 0;
+        margin: 0 var(--mobile-margin-s);
+        border-bottom: 1px solid var(--red);
+    }
+
+    .card_text {
+
+
+        * {
+            margin: 0.5rem 0;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+
+        }
+
+        .miscDetails {
+            display: flex;
+            justify-content: flex-start;
+            gap: 0.5rem;
+
+            p {
+                margin: 0;
+            }
+        }
+
+        .genres {
+            color: var(--pink);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            p {
+                margin: 0;
+            }
+
+            img {
+                height: 1rem;
+            }
+        }
+    }
+
+
+
+
+}
+
+@media (min-width: 45em) {
+    .hero {
+
+
+        img {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .hero_text {
+            padding: 1rem 3rem;
+            width: 100%;
+            margin: 0 auto;
+            max-width: var(--desktop-max-w);
+
+            h1 {
+                font-size: clamp(2rem, 3vw, 3rem);
+            }
+
+            p {
+                font-size: 1.25rem;
+            }
+        }
+    }
+
+
+    .movie_contents {
+        padding: 0 3rem;
+
+        .cast,
+        .main_info,
+        .overview,
+        .recs {
+            margin: 0 auto;
+            max-width: var(--desktop-max-w);
+        }
+
+
+        .main_info {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+
+            .poster {
+
+                max-height: none;
+                float: none;
+                width: 300px;
+                height: 450px;
+                height: auto;
+            }
+
+            .info_right {
+                width: 300px;
+            }
+
+            button {
+                margin: 1.5rem 0;
+            }
+
+        }
+
+        .card_text {
+
+            * {
+                margin: 1rem 0;
+            }
+
+            h2 {
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+
+            }
+
+            .miscDetails {
+                margin-top: 0.5rem;
+
+                p {
+                    margin: 0;
+                }
+            }
+
+            .rating {
+                gap: 0.5rem;
+
+                p {
+                    font-size: 1.5rem;
+                }
+
+                img {
+                    height: 1.5rem;
+                }
+            }
+
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    }
+
+}

@@ -41,7 +41,7 @@ const MovieInfo = ({ styles, data, details }) => {
                             let genreObj = genre_map.find((element) => element.id === id);
                             return (<p key={genreObj.id}>{genreObj.name}</p>)
                         }) :
-                        data.genres.map((genre) => <p key={genre.id}>{genre.name}</p>)
+                        <p>{data.genres.map((genre) => genre.name).join(", ")}</p>
                 }
 
             </div>

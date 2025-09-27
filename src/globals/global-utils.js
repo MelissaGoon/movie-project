@@ -66,7 +66,7 @@ export const getAgeRating = (data) => {
             // Return the first age rating found
             for (let i = 0; i < dateObjList.length; i++) {
                 if (dateObjList[i].certification !== "") {
-                    return `${dateObjList[i].certification} (CA)`;
+                    return `${dateObjList[i].certification}(CA)`;
                 }
             }
 
@@ -80,7 +80,7 @@ export const getAgeRating = (data) => {
             // Return the first age rating found
             for (let i = 0; i < dateObjList.length; i++) {
                 if (dateObjList[i].certification !== "") {
-                    return `${dateObjList[i].certification} (US)`;
+                    return `${dateObjList[i].certification}(US)`;
                 }
             }
 
