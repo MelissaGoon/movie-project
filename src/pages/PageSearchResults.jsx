@@ -4,15 +4,20 @@ import MovieCard from "../components/MovieCard";
 import { fetchSearchMovies } from "../globals/global-utils";
 import styles from '../styles/modules/SearchResults.module.css';
 import stylesGallery from '../styles/modules/ListPage.module.css';
-import { Link } from "react-router-dom";
 import ErrorPage from "../components/ErrorPage";
 import LoadingPage from "../components/LoadingPage";
+import { APP_TITLE } from "../globals/global-variables";
+
 const PageSearchResults = () => {
     const [searchParams] = useSearchParams();
     const query = searchParams.get('q');
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+
+    useEffect(() => {
+        document.title = `${APP_TITLE} | Search`
+    }, [])
 
 
     useEffect(() => {

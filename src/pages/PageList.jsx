@@ -1,12 +1,13 @@
 import styles from '../styles/modules/ListPage.module.css';
 import { useListContext } from "../context/ListContext"
 import { useConfig } from '../context/ConfigContext';
-import { ASSETS_FOLDER_PATH } from '../globals/global-variables';
+import { ASSETS_FOLDER_PATH, APP_TITLE } from '../globals/global-variables';
 import MovieCard from '../components/MovieCard';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import heroStyles from '../styles/modules/SingleMovie.module.css';
 import { useMediaQuery } from '@uidotdev/usehooks';
+
 
 const PageList = () => {
     const config = useConfig();
@@ -19,6 +20,11 @@ const PageList = () => {
     );
 
     const backdrop_size = largerScreen ? config.images.backdrop_sizes[3] : config.images.backdrop_sizes[1];
+
+    useEffect(() => {
+        document.title = `${APP_TITLE} | My List`
+    }, [])
+
 
     const handleBgLoad = () => {
         setBgLoaded(true);

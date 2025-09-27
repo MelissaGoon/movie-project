@@ -13,6 +13,7 @@ import Poster from "../components/Poster";
 import ErrorPage from "../components/ErrorPage";
 import LoadingPage from "../components/LoadingPage";
 import { useMediaQuery } from "@uidotdev/usehooks";
+import { APP_TITLE } from "../globals/global-variables";
 
 const PageSingleMovie = () => {
     const config = useConfig();
@@ -30,6 +31,11 @@ const PageSingleMovie = () => {
 
     const backdrop_size = largerScreen ? config.images.backdrop_sizes[3] : config.images.backdrop_sizes[1];
     const image_size = config.images.poster_sizes[4];
+
+    useEffect(() => {
+        document.title = `${APP_TITLE} | Movie`
+    }, [])
+
 
     useEffect(() => {
         async function loadMovie() {

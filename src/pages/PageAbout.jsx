@@ -1,8 +1,15 @@
 import { ASSETS_FOLDER_PATH } from "../globals/global-variables";
 import styles from '../styles/modules/About.module.css';
 import heroStyles from '../styles/modules/SingleMovie.module.css';
+import { APP_TITLE } from "../globals/global-variables";
+import { useEffect } from "react";
 
 const PageAbout = () => {
+
+    useEffect(() => {
+        document.title = `${APP_TITLE} | About`
+    }, [])
+
     return (
         <main id="site-main">
             <section className={heroStyles.hero}>
