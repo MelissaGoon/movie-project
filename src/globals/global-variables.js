@@ -6,3 +6,4 @@ export const ASSETS_FOLDER_PATH = import.meta.env.BASE_URL + 'assets/';
 export const MOVIE_LISTS = { popular: "popular", nowPlaying: "now_playing", upcoming: "upcoming", topRated: "top_rated" };
 export const APP_STORAGE_NAME = "ghostlyDB-app-list";
 export const APP_TITLE = "ghostlyDB";
+export const APP_FOLDER_NAME = "ghostly-db";

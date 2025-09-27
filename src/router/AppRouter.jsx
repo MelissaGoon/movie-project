@@ -9,11 +9,12 @@ import Footer from '../components/Footer';
 import PageSearchResults from '../pages/PageSearchResults';
 import ScrollHandler from './ScrollHandler';
 import ListProvider from '../context/ListContextProvider';
+import { APP_FOLDER_NAME } from '../globals/global-variables';
 
 const AppRouter = () => {
 
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={`/${APP_FOLDER_NAME}`}>
             <ListProvider>
                 <ScrollHandler />
                 <a className='screen-reader-text' href='#site-main'>Skip To Content</a>
