@@ -371,12 +371,35 @@ header {
     /* Links and buttons */
     .logo-link {
         height: 1.5rem;
-        object-fit: cover;
+        transition: all 0.3s ease-in-out;
+        transform: scale(1);
 
         img {
+            object-fit: cover;
             height: 100%;
             width: auto;
         }
+
+        &:hover {
+
+            transform: scale(1.1);
+
+        }
+
+    }
+
+    .search-btn {
+        svg {
+            transition: all 0.3s ease-in-out;
+            transform: scale(1);
+        }
+
+        &:hover {
+            svg {
+                transform: scale(1.2);
+            }
+        }
+
     }
 
     .search-btn {
@@ -430,7 +453,6 @@ header {
         background-color: var(--cream);
         right: 0;
         height: 120vh;
-        width: 50vw;
         padding: 1rem;
         padding-top: 4rem;
         z-index: -1;
@@ -487,6 +509,9 @@ header {
         font-family: "Montserrat", sans-serif;
         font-weight: 500;
 
+        .logo-link {
+            margin-right: auto;
+        }
 
         .nav-container {
             justify-content: normal;
@@ -512,7 +537,14 @@ header {
             svg {
                 width: 100%;
                 height: auto;
+                transition: all 0.3s ease-in-out;
+                transform: scale(1);
+            }
 
+            &:hover {
+                svg {
+                    transform: scale(1.2);
+                }
             }
 
             &:active,
@@ -528,21 +560,6 @@ header {
             margin-left: var(--navbar-gap);
         }
 
-        .search-btn,
-        .explore-expand {
-            svg {
-                transition: all 0.3s ease-in-out;
-                transform: scale(1);
-            }
-
-            &:hover {
-                svg {
-                    transform: scale(1.2);
-                }
-            }
-
-        }
-
 
         .hamburger-btn {
             display: none;
@@ -556,7 +573,7 @@ header {
             height: auto;
             z-index: 1000;
             padding: 0;
-            flex-grow: 8;
+            /* flex-grow: 6; */
 
             ul {
                 display: flex;
