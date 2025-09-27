@@ -33,16 +33,11 @@ const PageSingleMovie = () => {
     const image_size = config.images.poster_sizes[4];
 
     useEffect(() => {
-        document.title = `${APP_TITLE} | Movie`
-    }, [])
-
-
-    useEffect(() => {
         async function loadMovie() {
             try {
                 const movieD = await fetchSingleMovie(id);
                 setMovieDetails(movieD);
-                console.log(movieD.recommendations);
+                document.title = `${APP_TITLE} | ${movieD.title}`
             } catch (err) {
                 setError(err.message || "Error loading movie, please try again later.");
             } finally {
