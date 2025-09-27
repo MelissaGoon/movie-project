@@ -1,0 +1,47 @@
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.info {
+    padding: 1rem var(--mobile-margin-s);
+    text-align: center;
+    margin: 0 auto;
+    max-width: 900px;
+
+    .ghost_logo {
+        width: 150px;
+        height: auto;
+    }
+
+    .tmdb_logo {
+        width: 80px;
+        height: auto;
+    }
+}
+
+@media (min-width: 34em) {
+
+    .info {
+        padding: 2rem var(--mobile-margin-m);
+    }
+}
+
+@media (min-width: 45em) {
+    .title {
+        font-size: 5rem;
+    }
+
+    .info {
+        padding: 4rem 0;
+
+        h2 {
+            margin-top: 0;
+            font-size: 2.5rem;
+        }
+
+        p {
+            font-size: 1.25rem;
+        }
+    }
+}
