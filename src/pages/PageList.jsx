@@ -6,6 +6,7 @@ import MovieCard from '../components/MovieCard';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import heroStyles from '../styles/modules/SingleMovie.module.css';
+import { useMediaQuery } from '@uidotdev/usehooks';
 
 const PageList = () => {
     const config = useConfig();
@@ -13,11 +14,11 @@ const PageList = () => {
 
     const [bgLoaded, setBgLoaded] = useState(false);
     const image_base_url = config.images.base_url;
-    // TODO: implement use media query to get the retreived image sizes dynamically  
-    //  const isMobile = useMediaQuery({ maxWidth: 767 });
-    const backdrop_size = config.images.backdrop_sizes[3];
+    const largerScreen = useMediaQuery(
+        "only screen and (min-width : 720px)"
+    );
 
-
+    const backdrop_size = largerScreen ? config.images.backdrop_sizes[3] : config.images.backdrop_sizes[1];
 
     const handleBgLoad = () => {
         setBgLoaded(true);

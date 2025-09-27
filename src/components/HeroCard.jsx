@@ -7,6 +7,7 @@ import Poster from './Poster';
 import { useListContext } from '../context/ListContext';
 import { isSaved } from '../globals/global-utils';
 import { ASSETS_FOLDER_PATH } from '../globals/global-variables';
+import { useMediaQuery } from '@uidotdev/usehooks';
 
 const HeroCard = ({ data, slideNum }) => {
     let navigate = useNavigate();
@@ -14,9 +15,11 @@ const HeroCard = ({ data, slideNum }) => {
     const { list, addToList, removeFromList } = useListContext();
     let saved = isSaved(list, data.id);
 
-    // TODO: implement use media query to get the retreived image sizes dynamically  
-    //  const isMobile = useMediaQuery({ maxWidth: 767 });
-    const image_size = config.images.poster_sizes[5];
+    const largerScreen = useMediaQuery(
+        "only screen and (min-width : 720px)"
+    );
+
+    const image_size = largerScreen ? config.images.poster_sizes[5] : config.images.poster_sizes[2];
 
 
     const handleBtnClick = () => {

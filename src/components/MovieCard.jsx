@@ -20,8 +20,6 @@ const MovieCard = ({ data }) => {
         return "";
     }
 
-    // TODO: implement use media query to get the retreived image sizes dynamically  
-    //  const isMobile = useMediaQuery({ maxWidth: 767 });
     const image_size = config.images.poster_sizes[5];
 
     const handleSeeMore = () => {

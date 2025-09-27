@@ -5,7 +5,7 @@ import { useConfig } from '../context/ConfigContext';
 import { useState, useEffect } from "react";
 import { ASSETS_FOLDER_PATH } from "../globals/global-variables";
 import { PrevArrow, NextArrow } from "./Arrows";
-
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 const HomeHeroSlider = ({ popularArray }) => {
     const config = useConfig();
@@ -44,9 +44,11 @@ const HomeHeroSlider = ({ popularArray }) => {
 
 
     const image_base_url = config.images.base_url;
-    // TODO: implement use media query to get the retreived image sizes dynamically  
-    //  const isMobile = useMediaQuery({ maxWidth: 767 });
-    const backdrop_size = config.images.backdrop_sizes[3];
+    const largerScreen = useMediaQuery(
+        "only screen and (min-width : 720px)"
+    );
+
+    const backdrop_size = largerScreen ? config.images.backdrop_sizes[3] : config.images.backdrop_sizes[1];
 
     if (movies.length > 0) {
 

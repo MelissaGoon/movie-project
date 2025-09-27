@@ -59,8 +59,6 @@ const CastGallery = ({ data }) => {
 
 
     const image_base_url = config.images.base_url;
-    // TODO: implement use media query to get the retreived image sizes dynamically  
-    //  const isMobile = useMediaQuery({ maxWidth: 767 });
     const profile_size = config.images.profile_sizes[1];
     return (
         <div className={styles.slider_container}>
