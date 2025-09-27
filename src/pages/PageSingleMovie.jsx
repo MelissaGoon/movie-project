@@ -29,7 +29,7 @@ const PageSingleMovie = () => {
     );
 
     const backdrop_size = largerScreen ? config.images.backdrop_sizes[3] : config.images.backdrop_sizes[1];
-    const image_size = config.images.poster_sizes[3];
+    const image_size = config.images.poster_sizes[4];
 
     useEffect(() => {
         async function loadMovie() {

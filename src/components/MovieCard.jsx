@@ -20,7 +20,7 @@ const MovieCard = ({ data }) => {
         return "";
     }
 
-    const image_size = config.images.poster_sizes[5];
+    const image_size = config.images.poster_sizes[3];
 
     const handleSeeMore = () => {
         navigate({
