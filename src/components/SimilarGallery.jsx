@@ -1,63 +1,44 @@
 import Slider from "react-slick";
 import MovieCard from "./MovieCard";
 import { PrevArrow, NextArrow } from "./Arrows";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 const SimilarGallery = ({ movieArray }) => {
 
-    var settings = {
+    const isBelow470 = useMediaQuery("only screen and (max-width: 470px)");
+    const isBelow637 = useMediaQuery("only screen and (max-width: 637px)");
+    const isBelow720 = useMediaQuery("only screen and (max-width: 720px)");
+    const isBelow880 = useMediaQuery("only screen and (max-width: 880px)");
+    const isBelow1060 = useMediaQuery("only screen and (max-width: 1060px)");
+    const isBelow1230 = useMediaQuery("only screen and (max-width: 1230px)");
+
+    // Decide slides based on breakpoints
+    let slidesToShow = 6;
+    let slidesToScroll = 6;
+
+    if (isBelow470) {
+        slidesToShow = slidesToScroll = 2;
+    } else if (isBelow637) {
+        slidesToShow = slidesToScroll = 3;
+    } else if (isBelow720) {
+        slidesToShow = slidesToScroll = 4;
+    } else if (isBelow880) {
+        slidesToShow = slidesToScroll = 3;
+    } else if (isBelow1060) {
+        slidesToShow = slidesToScroll = 4;
+    } else if (isBelow1230) {
+        slidesToShow = slidesToScroll = 5;
+    }
+
+    const settings = {
         dots: false,
         infinite: false,
         speed: 500,
-        slidesToShow: 6,
-        slidesToScroll: 6,
+        slidesToShow: slidesToShow,
+        slidesToScroll: slidesToScroll,
         prevArrow: <PrevArrow additionalClass="arrowBtnSimilar" />,
         nextArrow: <NextArrow additionalClass="arrowBtnSimilar" />,
-        responsive: [
-            {
-                breakpoint: 1230,
-                settings: {
-                    slidesToShow: 5,
-                    slidesToScroll: 5
-                }
-            },
-            {
-                breakpoint: 1060,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4
-                }
-            },
-            {
-                breakpoint: 880,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3
-                }
-            },
-            {
-                breakpoint: 720,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4
-                }
-            },
-            {
-                breakpoint: 637,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3
-                }
-            },
-            {
-                breakpoint: 470,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            },
-        ]
     };
-
 
     return (
 

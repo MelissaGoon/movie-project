@@ -4,56 +4,41 @@ import CastItem from "./CastItem";
 import { ASSETS_FOLDER_PATH } from "../globals/global-variables";
 import styles from '../styles/modules/CastGallery.module.css';
 import { PrevArrow, NextArrow } from "./Arrows";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 const CastGallery = ({ data }) => {
     const config = useConfig();
     const castArray = data.credits.cast;
+    const isBelow380 = useMediaQuery("only screen and (max-width: 380px)");
+    const isBelow560 = useMediaQuery("only screen and (max-width: 560px)");
+    const isBelow780 = useMediaQuery("only screen and (max-width: 780px)");
+    const isBelow900 = useMediaQuery("only screen and (max-width: 900px)");
+    const isBelow1150 = useMediaQuery("only screen and (max-width: 1150px)");
 
-    var settings = {
+
+    let slidesToShow = 8;
+    let slidesToScroll = 8;
+
+    if (isBelow380) {
+        slidesToShow = slidesToScroll = 2;
+    } else if (isBelow560) {
+        slidesToShow = slidesToScroll = 3;
+    } else if (isBelow780) {
+        slidesToShow = slidesToScroll = 4;
+    } else if (isBelow900) {
+        slidesToShow = slidesToScroll = 5;
+    } else if (isBelow1150) {
+        slidesToShow = slidesToScroll = 6;
+    }
+
+    const settings = {
         dots: false,
         infinite: false,
         speed: 500,
-        slidesToShow: 8,
-        slidesToScroll: 8,
+        slidesToShow: slidesToShow,
+        slidesToScroll: slidesToScroll,
         prevArrow: <PrevArrow additionalClass="arrowBtnCast" />,
         nextArrow: <NextArrow additionalClass="arrowBtnCast" />,
-        responsive: [
-            {
-                breakpoint: 1150,
-                settings: {
-                    slidesToShow: 6,
-                    slidesToScroll: 6
-                }
-            },
-            {
-                breakpoint: 900,
-                settings: {
-                    slidesToShow: 5,
-                    slidesToScroll: 5
-                }
-            },
-            {
-                breakpoint: 780,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4
-                }
-            },
-            {
-                breakpoint: 560,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3
-                }
-            },
-            {
-                breakpoint: 380,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            }
-        ]
     };
 
 
